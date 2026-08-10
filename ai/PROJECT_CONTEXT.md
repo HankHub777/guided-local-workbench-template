@@ -6,6 +6,8 @@ Enable ordinary users to build small office tools with guidance from an LLM chat
 
 The template must be understandable through documents and small, reviewable changes. Chatbot assistance is a short-term interaction model, not a requirement for the resulting tool at runtime. The repository must keep a clear upgrade path to a managed web service when the real workflow requires it.
 
+Its organizational value is to turn LLM-assisted prototypes into portable, verifiable, and handoff-ready assets. The same repository context must support a chatbot-only environment today, a controlled agent environment later, and eventual engineering ownership with low communication overhead.
+
 ## Primary users
 
 - Ordinary user / citizen developer: knows the business process and verifies results, but is not expected to understand framework internals or have access to an agent environment.
