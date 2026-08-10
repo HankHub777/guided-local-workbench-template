@@ -1,0 +1,7 @@
+{
+  "mode": "local",
+  "applicationName": "My Office Tool",
+  "dataSource": "local-json",
+  "generatedDataDirectory": "data/generated",
+  "showDataFreshness": true
+}

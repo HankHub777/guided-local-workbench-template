@@ -1,0 +1,12 @@
+{
+  "datasets": [
+    {
+      "name": "example_records",
+      "sourceFile": "data/input/example.xlsx",
+      "sheet": "Sheet1",
+      "outputFile": "data/generated/example_records.json",
+      "owner": "Replace with data owner",
+      "refresh": "manual"
+    }
+  ]
+}
