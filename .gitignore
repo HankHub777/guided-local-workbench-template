@@ -13,3 +13,6 @@ coverage/
 updates/incoming/*
 !updates/incoming/.gitkeep
 updates/applied/
+
+# Generated context bundle for LLM chatbot sessions; rebuildable, never hand-edit
+LLM_CONTEXT_BUNDLE.md
