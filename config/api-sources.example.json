@@ -1,0 +1,14 @@
+{
+  "apis": [
+    {
+      "name": "example-api",
+      "enabled": false,
+      "baseUrl": "https://api.example.com",
+      "authentication": "environment-variable",
+      "owner": "Replace with system owner",
+      "dataClassification": "internal",
+      "refreshOrRateLimit": "not-configured",
+      "note": "Never put keys, tokens, or client secrets in this file."
+    }
+  ]
+}
