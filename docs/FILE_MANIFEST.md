@@ -4,18 +4,21 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 
 ## Always-present foundation
 
-| Path | Why it exists | Read or update when |
-| --- | --- | --- |
-| `README.md` | Explains the template, operating modes, and core rules. | Starting the project or changing its user-facing setup. |
-| `AGENTS.md` | Required collaboration and safe-change rules for chatbot- or agent-assisted changes. | Before every change. |
-| `ai/PROJECT_CONTEXT.md` | Product intent, users, definition of done, and questions that determine the operating mode. | Scoping a feature. |
-| `ai/ARCHITECTURE_RULES.md` | Dependency direction and local-to-managed boundaries. | Changing code structure or data flow. |
-| `docs/FILE_MANIFEST.md` | This plain-language inventory of the shared template base. | Orienting a person or agent. |
-| `docs/DATA_CONTRACT.md` | Dataset ownership, schema, validation, and lineage. | Adding or changing data. |
-| `docs/UPGRADE_PATH.md` | Objective triggers for adding a server, database, or managed service. | A request needs shared access, scheduling, writes, auth, or audit. |
-| `docs/DECISIONS.md` | Durable architectural decisions (ADRs). | A choice constrains future work. |
-| `config/*.example.json` | Safe, versioned examples of non-secret app, data-source, API, and database configuration. | Adding configurable behavior; never put real credentials here. |
-| `.gitignore` | Excludes dependencies, secrets, generated data, and local inputs from Git. | Introducing a new local artifact type. |
+"Canonical" files define the template mechanism itself and should not have their rules or structure rewritten while building a specific tool. "Instance" files are this project's own content — fill them in and evolve them freely. See `docs/TEMPLATE_BOUNDARY.md` for the full rule.
+
+| Path | Canonical / Instance | Why it exists | Read or update when |
+| --- | --- | --- | --- |
+| `README.md` | Canonical | Explains the template, operating modes, and core rules. | Starting the project or changing its user-facing setup. |
+| `AGENTS.md` | Canonical | Required collaboration and safe-change rules for chatbot- or agent-assisted changes. | Before every change. |
+| `ai/PROJECT_CONTEXT.md` | Instance | Product intent, users, definition of done, and questions that determine the operating mode. | Scoping a feature. |
+| `ai/ARCHITECTURE_RULES.md` | Canonical | Dependency direction and local-to-managed boundaries. | Changing code structure or data flow. |
+| `docs/FILE_MANIFEST.md` | Canonical (structure) | This plain-language inventory of the shared template base. | Orienting a person or agent. |
+| `docs/TEMPLATE_BOUNDARY.md` | Canonical | Defines which files are template contract vs. project content, and how to propose a template-level change. | Before any change; whenever a request seems to touch a canonical file. |
+| `docs/DATA_CONTRACT.md` | Instance | Dataset ownership, schema, validation, and lineage. | Adding or changing data. |
+| `docs/UPGRADE_PATH.md` | Canonical | Objective triggers for adding a server, database, or managed service. | A request needs shared access, scheduling, writes, auth, or audit. |
+| `docs/DECISIONS.md` | Instance | Durable architectural decisions (ADRs). | A choice constrains future work. |
+| `config/*.example.json` | Instance | Safe, versioned examples of non-secret app, data-source, API, and database configuration. | Adding configurable behavior; never put real credentials here. |
+| `.gitignore` | Canonical | Excludes dependencies, secrets, generated data, and local inputs from Git. | Introducing a new local artifact type. |
 
 ## Directories that become active as the tool is implemented
 
