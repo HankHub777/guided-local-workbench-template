@@ -50,8 +50,8 @@
 
 同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
 
-- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件。
-- **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`, `data/`, `tests/`。
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`.gitignore`、`scripts/apply_update.py`、`updates/README.md`。
+- **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。
 
 完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
 
@@ -67,6 +67,16 @@
 
 要求它先說明將修改哪些檔案、哪些驗收條件會通過，再產生 patch。不要要求它「做一個完整系統」。使用者仍應在本機檢查 patch、執行驗證步驟，並只把不含機密資訊的內容提供給 chatbot。
 
+### 把 chatbot 的輸出套用到本機
+
+如果 chatbot 只能整包匯出更新後的檔案（沒有 agent 能力、無法直接改本機檔案），不要手動整包覆蓋本機資料夾。改用：
+
+1. 請 chatbot 把變更輸出成一個 zip，檔名照固定格式命名為 `update_YYYYMMDD_HHMMSS.zip`（例如 `update_20260811_153000.zip`），並盡量附上 `updates/README.md` 所定義的 `manifest.json`。
+2. 把這個檔案放進 `updates/incoming/`。
+3. 依你的作業系統（macOS Terminal 或 Windows PowerShell）執行 `scripts/apply_update.py` — 完整可直接複製貼上的指令、以及互動提示的說明，見 [updates/README.md](updates/README.md)。
+
+這個腳本會自動套用一般專案內容，但遇到模板契約檔案或任何刪除都會停下來要求確認，並把每次結果記錄進 `CHANGELOG.md`。
+
 ## 目錄摘要
 
 完整定義見 [docs/FILE_MANIFEST.md](docs/FILE_MANIFEST.md)。第一次接手模板時，先從這份檔案開始。
@@ -78,6 +88,7 @@ data/      輸入、測試 fixture、ETL 產物
 docs/      人可讀的決策、契約與交接文件
 scripts/   Excel/CSV → JSON 等可重複執行工作
 shared/    前後端共用的型別、schema、常數
+updates/   套用 chatbot 整包更新的收件匣與腳本
 web/       React + TypeScript + Tailwind 前端
 server/    API／背景工作的邊界（初期只保留 README）
 ```

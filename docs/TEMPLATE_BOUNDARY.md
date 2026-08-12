@@ -12,6 +12,11 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `docs/FILE_MANIFEST.md` — its table structure and row set (new instance-specific files still get added as new rows)
 - `docs/UPGRADE_PATH.md` — its trigger conditions
 - `docs/TEMPLATE_BOUNDARY.md` (this file)
+- `.gitignore`
+- `scripts/apply_update.py`
+- `updates/README.md`
+
+`scripts/apply_update.py` (see [`updates/README.md`](../updates/README.md)) enforces this boundary automatically whenever an LLM-delivered update package is applied: files outside this list apply without asking, but any change to a file on this list — or any deletion at all — always pauses for explicit confirmation first.
 
 ## Instance files (this project's own content)
 
@@ -21,7 +26,7 @@ Fill these in and evolve them freely while building the tool — that is what th
 - `docs/DATA_CONTRACT.md`
 - `docs/DECISIONS.md`
 - `config/*.example.json`
-- `web/`, `server/`, `shared/`, `scripts/`, `data/`, `tests/`
+- `web/`, `server/`, `shared/`, `scripts/` (except `scripts/apply_update.py`, which is canonical — see above), `data/`, `tests/`
 
 ## If a task seems to need a template-level change
 

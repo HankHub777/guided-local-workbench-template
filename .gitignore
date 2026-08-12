@@ -8,3 +8,8 @@ data/generated/
 coverage/
 *.log
 .DS_Store
+
+# LLM-delivered update packages (not part of the template contract)
+updates/incoming/*
+!updates/incoming/.gitkeep
+updates/applied/

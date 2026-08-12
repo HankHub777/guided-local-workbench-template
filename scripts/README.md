@@ -2,6 +2,10 @@
 
 Scripts convert data or support repeatable local work. Each script must document inputs, outputs, error behaviour, and a safe re-run procedure.
 
+| Script | Input → output | Rule |
+| --- | --- | --- |
+| `apply_update.py` | `updates/incoming/` package → applied files + `CHANGELOG.md` entry | Canonical (see `docs/TEMPLATE_BOUNDARY.md`) — protects itself and the other canonical files from silent overwrite. Usage: `updates/README.md`. |
+
 Recommended future scripts:
 
 | Script | Input → output | Rule |

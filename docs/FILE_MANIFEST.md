@@ -19,13 +19,15 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 | `docs/DECISIONS.md` | Instance | Durable architectural decisions (ADRs). | A choice constrains future work. |
 | `config/*.example.json` | Instance | Safe, versioned examples of non-secret app, data-source, API, and database configuration. | Adding configurable behavior; never put real credentials here. |
 | `.gitignore` | Canonical | Excludes dependencies, secrets, generated data, and local inputs from Git. | Introducing a new local artifact type. |
+| `CHANGELOG.md` | Instance | Dated, narrative record of every applied/declined change, written by `scripts/apply_update.py` and appendable by hand; substitutes for git history during the chatbot-only phase. | After every `apply_update.py` run; before an engineering handoff. |
 
 ## Directories that become active as the tool is implemented
 
 | Path | Responsibility | First file to add |
 | --- | --- | --- |
 | `shared/` | Canonical runtime schemas, types, and constants used across boundaries. | A schema for the first dataset. |
-| `scripts/` | Repeatable ETL, validation, and local helper commands. | A documented data refresh/validation command. |
+| `scripts/` | Repeatable ETL, validation, and local helper commands. Instance content, except `scripts/apply_update.py` itself, which is canonical. | A documented data refresh/validation command. |
+| `updates/` | Canonical mechanism for applying LLM-delivered update packages without manual file placement; see `updates/README.md`. `incoming/` and `applied/` hold transient, git-ignored working data. | Already present; used whenever a chatbot exports a whole-project update. |
 | `data/input/` | Private local source spreadsheets or CSV files; ignored by Git. | The owner-provided source file. |
 | `data/fixtures/` | Small anonymized test data that is safe to commit. | A representative fixture. |
 | `data/generated/` | Rebuildable JSON read models; never hand-edit. | ETL output. |
