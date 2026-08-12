@@ -46,6 +46,15 @@
 4. 秘密資訊不進 Git；本機使用 `.env`，可分享的範例放在 `config/*.example.*`。
 5. 每次改資料結構，要一併更新 schema、ETL、測試資料與 `docs/DATA_CONTRACT.md`。
 
+## 模板契約與專案內容的邊界
+
+同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
+
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件。
+- **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`, `data/`, `tests/`。
+
+完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
+
 ## LLM chatbot 工作方式
 
 在不能使用 agent 的環境中，把下列檔案一併提供給 chatbot，再提出**一個可驗收的需求**：
