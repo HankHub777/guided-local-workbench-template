@@ -90,10 +90,18 @@ Apply this change? [y/N/d]
 
 Type `y` to apply it, `N` (or just press Enter) to skip it, or `d` to see the full diff before deciding.
 
-## 5. What happens next
+## 5. Tell the chatbot what actually happened
+
+If you're going to ask the chatbot for another change in the same conversation, don't skip this step. The chatbot only knows what it *proposed* — not whether you actually approved every part of it. If you declined anything, the chatbot's idea of your project is now wrong unless you correct it.
+
+At the end of the run, the script prints a short block starting with "Paste this back into the chatbot so it knows what actually happened." Copy that block and paste it as your next message. It's short on purpose: things that went exactly as the chatbot expected are just counted, not repeated — only the parts that *didn't* go as expected (declined or failed changes) are spelled out, since those are the only ones that would otherwise mislead it.
+
+You'll also find this same text saved as `sync_note.md` next to the archived package under `updates/applied/`, in case you close the terminal before copying it.
+
+## 6. What happens next
 
 - Every run adds a new dated entry to `CHANGELOG.md` at the project root, listing what was applied, deleted, or declined and why — this is what an engineering team can later use to reconstruct the project's history if it's ever handed off (see `docs/UPGRADE_PATH.md`).
-- The package you dropped in gets moved into `updates/applied/<timestamp>-<slug>/` (not deleted), alongside a machine-readable `apply_log.json` — so you always have a copy to go back to.
+- The package you dropped in gets moved into `updates/applied/<timestamp>-<slug>/` (not deleted), alongside a machine-readable `apply_log.json` and the `sync_note.md` mentioned above — so you always have a copy to go back to.
 - If you declined a canonical-file change but you think the template really should adopt it, log it in `docs/TEMPLATE_BOUNDARY.md`'s proposal table.
 
 ## If something looks wrong
