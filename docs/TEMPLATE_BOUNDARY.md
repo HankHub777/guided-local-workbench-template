@@ -15,8 +15,11 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `.gitignore`
 - `scripts/apply_update.py`
 - `updates/README.md`
+- `scripts/build_context_bundle.py`
 
 `scripts/apply_update.py` (see [`updates/README.md`](../updates/README.md)) enforces this boundary automatically whenever an LLM-delivered update package is applied: files outside this list apply without asking, but any change to a file on this list — or any deletion at all — always pauses for explicit confirmation first.
+
+`scripts/build_context_bundle.py` generates `LLM_CONTEXT_BUNDLE.md`, a single-file concatenation of `AGENTS.md`, this file, `docs/FILE_MANIFEST.md`, `ai/PROJECT_CONTEXT.md`, and `ai/ARCHITECTURE_RULES.md` (its own `BUNDLE_FILES` constant is the source of truth) for handing to an LLM chatbot at the start of a session — see README.md's "LLM chatbot 工作方式".
 
 ## Instance files (this project's own content)
 

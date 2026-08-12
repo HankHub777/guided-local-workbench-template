@@ -50,22 +50,24 @@
 
 同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
 
-- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`.gitignore`、`scripts/apply_update.py`、`updates/README.md`。
-- **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`.gitignore`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
+- **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py`、`build_context_bundle.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。`LLM_CONTEXT_BUNDLE.md` 是產物，不進 Git，由 `scripts/build_context_bundle.py` 重建。
 
 完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
 
 ## LLM chatbot 工作方式
 
-在不能使用 agent 的環境中，把下列檔案一併提供給 chatbot，再提出**一個可驗收的需求**：
+在不能使用 agent 的環境中，開始對話前先執行：
 
-- `AGENTS.md`
-- `ai/PROJECT_CONTEXT.md`
-- `ai/ARCHITECTURE_RULES.md`
-- `docs/FILE_MANIFEST.md`
-- 對應的 `shared/` 資料契約
+```bash
+python3 scripts/build_context_bundle.py
+```
 
-要求它先說明將修改哪些檔案、哪些驗收條件會通過，再產生 patch。不要要求它「做一個完整系統」。使用者仍應在本機檢查 patch、執行驗證步驟，並只把不含機密資訊的內容提供給 chatbot。
+會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（串接 `AGENTS.md`、`docs/TEMPLATE_BOUNDARY.md`、`docs/FILE_MANIFEST.md`、`ai/PROJECT_CONTEXT.md`、`ai/ARCHITECTURE_RULES.md`），把這一份整份上傳或貼給 chatbot，就不用逐一上傳五個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
+
+如果這次任務會動到特定的資料結構，另外把對應的 `shared/` 資料契約檔案附上——bundle 刻意不包含它，因為那是任務相關、不是每次都要給的。
+
+給完 context 後，再提出**一個可驗收的需求**，要求 chatbot 先說明將修改哪些檔案、哪些驗收條件會通過，再產生 patch。不要要求它「做一個完整系統」。使用者仍應在本機檢查 patch、執行驗證步驟，並只把不含機密資訊的內容提供給 chatbot。
 
 ### 把 chatbot 的輸出套用到本機
 

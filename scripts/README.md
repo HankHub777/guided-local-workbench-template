@@ -5,6 +5,7 @@ Scripts convert data or support repeatable local work. Each script must document
 | Script | Input → output | Rule |
 | --- | --- | --- |
 | `apply_update.py` | `updates/incoming/` package → applied files + `CHANGELOG.md` entry | Canonical (see `docs/TEMPLATE_BOUNDARY.md`) — protects itself and the other canonical files from silent overwrite. Usage: `updates/README.md`. |
+| `build_context_bundle.py` | canonical orientation files → `LLM_CONTEXT_BUNDLE.md` | Canonical. Always regenerates from scratch; refuses to write a partial bundle if a source file is missing. Run before starting a new chatbot session. |
 
 Recommended future scripts:
 

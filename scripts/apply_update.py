@@ -35,6 +35,7 @@ CANONICAL_PATHS = {
     ".gitignore",
     "scripts/apply_update.py",
     "updates/README.md",
+    "scripts/build_context_bundle.py",
 }
 
 # Never overwritten by an incoming package; only this script's own append step touches it.
