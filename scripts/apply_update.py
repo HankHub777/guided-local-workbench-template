@@ -33,6 +33,7 @@ CANONICAL_PATHS = {
     "docs/UPGRADE_PATH.md",
     "docs/TEMPLATE_BOUNDARY.md",
     ".gitignore",
+    "LICENSE",
     "scripts/apply_update.py",
     "updates/README.md",
     "scripts/build_context_bundle.py",
