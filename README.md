@@ -63,7 +63,9 @@
 python3 scripts/build_context_bundle.py
 ```
 
-會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（串接 `AGENTS.md`、`docs/TEMPLATE_BOUNDARY.md`、`docs/FILE_MANIFEST.md`、`ai/PROJECT_CONTEXT.md`、`ai/ARCHITECTURE_RULES.md`），把這一份整份上傳或貼給 chatbot，就不用逐一上傳五個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
+會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（裡面依序放了 5 份文件，各自在做什麼都有一行說明：協作規則、哪些檔案不能隨便改、整個專案的檔案索引、這個工具是做什麼的、程式架構的邊界），把這一份整份上傳或貼給 chatbot，就不用逐一上傳五個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
+
+如果產生的檔案開頭出現「still template placeholder content」這樣的提醒，代表「這個工具是做什麼的」那份文件（`ai/PROJECT_CONTEXT.md`）你還沒填成自己專案的真實內容、還是模板出廠時的通用範例。看到這個提醒，代表 chatbot 現在拿到的還不是「你這個工具」的真實資訊——找時間把那份文件改成寫你自己的專案，chatbot 給的建議才會真的對你有用。
 
 如果這次任務會動到特定的資料結構，另外把對應的 `shared/` 資料契約檔案附上——bundle 刻意不包含它，因為那是任務相關、不是每次都要給的。
 
@@ -76,6 +78,7 @@ python3 scripts/build_context_bundle.py
 1. 請 chatbot 把變更輸出成一個 zip，檔名照固定格式命名為 `update_YYYYMMDD_HHMMSS.zip`（例如 `update_20260811_153000.zip`），並盡量附上 `updates/README.md` 所定義的 `manifest.json`。
 2. 把這個檔案放進 `updates/incoming/`。
 3. 依你的作業系統（macOS Terminal 或 Windows PowerShell）執行 `scripts/apply_update.py` — 完整可直接複製貼上的指令、以及互動提示的說明，見 [updates/README.md](updates/README.md)。
+4. 腳本跑完後，畫面上會印出一小段文字，開頭寫「Paste this back into the chatbot so it knows what actually happened」。**如果你還會在同一個對話裡繼續請 chatbot 做事，把這段話整段複製、貼回聊天室當作你的下一句話。** chatbot 只知道自己「建議」了什麼，不知道你實際上有沒有全部照做——如果你剛剛跳過了某個檔案的變更，不告訴它的話，它會誤以為那個檔案已經改好了，接下來給你的建議可能就會建立在錯誤的假設上。
 
 這個腳本會自動套用一般專案內容，但遇到模板契約檔案或任何刪除都會停下來要求確認，並把每次結果記錄進 `CHANGELOG.md`。
 

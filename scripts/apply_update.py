@@ -356,6 +356,46 @@ def write_changelog(outcomes: list[Outcome], summary: str, source_name: str, mod
     tmp_path.replace(changelog_path)
 
 
+def build_sync_note(outcomes: list[Outcome]) -> str:
+    """A short, copy-paste-back-to-the-chatbot summary of this run.
+
+    Deliberately asymmetric: changes that landed exactly as proposed get one
+    line total (the chatbot already assumes those happened — repeating them
+    file-by-file adds no new information). Anything that differs from what
+    the chatbot proposed — declined or failed changes — gets full detail,
+    because that's the part the chatbot doesn't already know and will act on
+    incorrectly if it isn't told.
+    """
+    as_proposed = [o for o in outcomes if o.status in {"applied", "deleted"}]
+    declined = [o for o in outcomes if o.status == "declined"]
+    errors = [o for o in outcomes if o.status == "skipped-error"]
+
+    lines = ["Paste this back into the chatbot so it knows what actually happened:", ""]
+    if as_proposed:
+        lines.append(f"- {len(as_proposed)} change(s) were applied exactly as proposed.")
+    else:
+        lines.append("- Nothing was applied as proposed.")
+
+    if declined:
+        lines.append("")
+        lines.append(f"- {len(declined)} change(s) were NOT applied — do not assume these took effect:")
+        for outcome in declined:
+            change = outcome.change
+            tag = "template contract file" if is_canonical(change.path) else "deletion"
+            lines.append(f"  - `{change.path}` ({change.type}, {tag}) — user declined this one.")
+
+    if errors:
+        lines.append("")
+        lines.append(f"- {len(errors)} change(s) failed to apply:")
+        for outcome in errors:
+            lines.append(f"  - `{outcome.change.path}` — {outcome.detail}")
+
+    if not declined and not errors:
+        lines.append("- Nothing else to report; the plan went through unchanged.")
+
+    return "\n".join(lines) + "\n"
+
+
 def check_boundary_drift() -> None:
     boundary_path = PROJECT_ROOT / "docs" / "TEMPLATE_BOUNDARY.md"
     if not boundary_path.exists():
@@ -448,12 +488,18 @@ def main(argv: list[str] | None = None) -> int:
         write_apply_log(archive_dir, outcomes, mode, selected_path.name)
         write_changelog(outcomes, summary, selected_path.name, mode, archive_dir)
 
+        sync_note = build_sync_note(outcomes)
+        (archive_dir / "sync_note.md").write_text(sync_note, encoding="utf-8")
+
         applied = sum(1 for o in outcomes if o.status in {"applied", "deleted"})
         declined = sum(1 for o in outcomes if o.status == "declined")
         print(
             f"\nDone: {applied} applied, {declined} declined. "
             f"See CHANGELOG.md and {archive_dir.relative_to(PROJECT_ROOT)}."
         )
+        print(f"\n----- {archive_dir.relative_to(PROJECT_ROOT) / 'sync_note.md'} -----")
+        print(sync_note, end="")
+        print("-----")
         return 2 if had_error else 0
 
 
