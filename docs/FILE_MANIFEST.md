@@ -19,6 +19,7 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 | `docs/DECISIONS.md` | Instance | Durable architectural decisions (ADRs). | A choice constrains future work. |
 | `config/*.example.json` | Instance | Safe, versioned examples of non-secret app, data-source, API, and database configuration. | Adding configurable behavior; never put real credentials here. |
 | `.gitignore` | Canonical | Excludes dependencies, secrets, generated data, and local inputs from Git. | Introducing a new local artifact type. |
+| `LICENSE` | Canonical | MIT license terms covering this template and everything built from it. | A deliberate licensing decision, not a per-project change. |
 | `CHANGELOG.md` | Instance | Dated, narrative record of every applied/declined change, written by `scripts/apply_update.py` and appendable by hand; substitutes for git history during the chatbot-only phase. | After every `apply_update.py` run; before an engineering handoff. |
 | `LLM_CONTEXT_BUNDLE.md` | Generated (git-ignored) | Single-file concatenation of the canonical orientation files, built by `scripts/build_context_bundle.py`, for uploading to an LLM chatbot at the start of a session. Never hand-edit; regenerate instead. | Before starting a new chatbot session. |
 

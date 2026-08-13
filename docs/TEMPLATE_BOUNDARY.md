@@ -13,6 +13,7 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `docs/UPGRADE_PATH.md` — its trigger conditions
 - `docs/TEMPLATE_BOUNDARY.md` (this file)
 - `.gitignore`
+- `LICENSE`
 - `scripts/apply_update.py`
 - `updates/README.md`
 - `scripts/build_context_bundle.py`
@@ -29,7 +30,7 @@ Fill these in and evolve them freely while building the tool — that is what th
 - `docs/DATA_CONTRACT.md`
 - `docs/DECISIONS.md`
 - `config/*.example.json`
-- `web/`, `server/`, `shared/`, `scripts/` (except `scripts/apply_update.py`, which is canonical — see above), `data/`, `tests/`
+- `web/`, `server/`, `shared/`, `scripts/` (except `scripts/apply_update.py` and `scripts/build_context_bundle.py`, which are canonical — see above), `data/`, `tests/`
 
 ## If a task seems to need a template-level change
 
