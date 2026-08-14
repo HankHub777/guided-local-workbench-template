@@ -1,5 +1,10 @@
 # Migrating a single-file HTML prototype into this template
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../LICENSE)
+[![Status: Public](https://img.shields.io/badge/status-public-brightgreen.svg)](https://github.com/HankHub777/guided-local-workbench-template)
+[![Read in English](https://img.shields.io/badge/lang-English-blue.svg)](MIGRATION_FROM_SINGLE_FILE.md)
+[![閱讀中文版](https://img.shields.io/badge/lang-繁體中文-lightgrey.svg)](MIGRATION_FROM_SINGLE_FILE.zh-TW.md)
+
 You already have real work built up in a chatbot conversation as one big HTML file — inline CSS, inline JavaScript, data hardcoded into the markup. You want to bring that into this template's structure without starting over.
 
 This is a one-time on-ramp, not the ongoing workflow. Once migration is done, go back to the small-change loop in [README.md](../README.md)'s "Working with an LLM chatbot" section.

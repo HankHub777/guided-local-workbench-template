@@ -9,6 +9,49 @@ This is a template that lets an ordinary user build a personal local workbench *
 
 By default, the tool runs locally — for example, Excel goes through an ETL step into JSON, which a React front end then reads. As requirements mature, the same repository can progressively add an API, a database, deployment, and formal service governance. That upgrade path existing is not a reason to add those pieces early, during the prototype stage.
 
+## How to Start
+
+You don't need to know git well to get this template onto your computer. This section only covers getting the files onto your machine — for what to do once you have them, keep reading the sections below.
+
+### The easy way (recommended)
+
+1. Go to the [template's GitHub page](https://github.com/HankHub777/guided-local-workbench-template).
+2. Click the green **Use this template** button, then **Create a new repository**. This makes your own independent copy under your own GitHub account — changes you make won't affect the original template, and changes to the original template won't automatically show up in yours either.
+3. Give it a name (this becomes your project's name) and click **Create repository**.
+4. On your new repository's page, click the green **Code** button and copy the URL shown there (it looks like `https://github.com/your-username/your-project-name.git`).
+5. Open a terminal — macOS: the **Terminal** app; Windows: **PowerShell** — and go to the folder where you want this project to live, for example:
+   ```bash
+   cd ~/Documents
+   ```
+6. Run:
+   ```bash
+   git clone https://github.com/your-username/your-project-name.git
+   cd your-project-name
+   ```
+   This downloads all the template's files into a new folder named after your project, and puts you inside it.
+
+You now have your own copy, ready to go — continue with "Choose an operating mode first," below.
+
+### If "Use this template" isn't available to you
+
+Some company GitHub accounts turn this button off. If that's your situation:
+
+1. Create a new, empty repository on GitHub yourself — don't add a README, license, or `.gitignore` when creating it; leave it completely empty. Copy its URL.
+2. Open a terminal, go to where you want the project to live, and run:
+   ```bash
+   git clone https://github.com/HankHub777/guided-local-workbench-template.git my-project
+   cd my-project
+   ```
+   ("Cloning" downloads a full copy of a repository. This one command does everything a beginner would otherwise need separate `git init` and `git remote add` commands for, which is why they don't appear here as extra steps.)
+3. Point this copy at your own empty repository instead of the original template, then upload everything to it:
+   ```bash
+   git remote remove origin
+   git remote add origin https://github.com/your-username/your-new-repo-name.git
+   git push -u origin main
+   ```
+
+Either way, you end up in the same place: your own project, on your own GitHub account, with nothing connecting it back to the original template.
+
 ## Why a template, not just a single HTML file
 
 A single HTML file plus an ongoing conversation with an LLM is a great fit for a one-off, personal-use tool. This template handles a different situation: the tool keeps changing, uses real data, gets handed to other people, or will eventually need to become a real service.
@@ -57,7 +100,7 @@ Don't enable a backend or database just because the directory exists. See [docs/
 
 The same person may use this template to build more than one local workbench over time, and clones get handed off between colleagues. If the template's own contract files get casually rewritten as part of ordinary changes, each clone gradually drifts into a different shape, and versions stop matching each other at handoff.
 
-- **Template contract (don't change its rules or structure while building a single tool)**: `README.md`, `README.zh-TW.md`, `AGENTS.md`, `ai/ARCHITECTURE_RULES.md`, the table structure of `docs/FILE_MANIFEST.md`, the upgrade triggers in `docs/UPGRADE_PATH.md`, `docs/MIGRATION_FROM_SINGLE_FILE.md`, `.gitignore`, `LICENSE`, `scripts/apply_update.py`, `updates/README.md`, `scripts/build_context_bundle.py`.
+- **Template contract (don't change its rules or structure while building a single tool)**: `README.md`, `README.zh-TW.md`, `AGENTS.md`, `ai/ARCHITECTURE_RULES.md`, the table structure of `docs/FILE_MANIFEST.md`, the upgrade triggers in `docs/UPGRADE_PATH.md`, `docs/MIGRATION_FROM_SINGLE_FILE.md`, `docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md`, `.gitignore`, `LICENSE`, `scripts/apply_update.py`, `updates/README.md`, `scripts/build_context_bundle.py`.
 - **Project content (keep filling in and changing this while building the tool)**: `ai/PROJECT_CONTEXT.md`, `docs/DATA_CONTRACT.md`, `docs/DECISIONS.md`, `config/*.example.json`, and `web/`, `server/`, `shared/`, `scripts/` (except `apply_update.py` and `build_context_bundle.py`), `data/`, `tests/`. `CHANGELOG.md` is only ever appended to by `scripts/apply_update.py` — no update package should overwrite it directly. `LLM_CONTEXT_BUNDLE.md` is a build artifact, not tracked in Git, rebuilt by `scripts/build_context_bundle.py`.
 
 For the full list, how to classify a file, and the process for when the template itself seems to need a change, see [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md).

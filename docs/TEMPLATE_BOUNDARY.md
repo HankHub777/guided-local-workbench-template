@@ -14,6 +14,7 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `docs/UPGRADE_PATH.md` — its trigger conditions
 - `docs/TEMPLATE_BOUNDARY.md` (this file)
 - `docs/MIGRATION_FROM_SINGLE_FILE.md`
+- `docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md`
 - `.gitignore`
 - `LICENSE`
 - `scripts/apply_update.py`

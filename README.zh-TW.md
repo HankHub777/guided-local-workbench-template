@@ -9,6 +9,49 @@
 
 預設工具以本機方式運作：例如 Excel 經 ETL 轉成 JSON，再由 React 前端讀取。當需求成熟時，同一 repository 可逐步加入 API、資料庫、部署與正式的服務治理；不應因為這條升級路徑存在，就在原型階段預先加入它們。
 
+## 如何開始
+
+你不需要很懂 git 也能把這個模板弄到自己的電腦上。這一段只講怎麼把檔案弄到手；拿到之後要做什麼，繼續看下面的段落。
+
+### 最簡單的方式（推薦）
+
+1. 到[這個模板的 GitHub 頁面](https://github.com/HankHub777/guided-local-workbench-template)。
+2. 點綠色的 **Use this template** 按鈕，再點 **Create a new repository**。這會在你自己的 GitHub 帳號底下，建立一份完全獨立的副本——你之後怎麼改都不會影響原本的模板，原本模板之後的更新也不會自動出現在你這份裡。
+3. 幫它取個名字（這會是你專案的名字），點 **Create repository**。
+4. 進到你新建的 repository 頁面，點綠色的 **Code** 按鈕，複製那個網址（長得像 `https://github.com/你的帳號/你的專案名稱.git`）。
+5. 打開終端機——macOS 用 **Terminal** app；Windows 用 **PowerShell**——切換到你想放這個專案的資料夾，例如：
+   ```bash
+   cd ~/Documents
+   ```
+6. 執行：
+   ```bash
+   git clone https://github.com/你的帳號/你的專案名稱.git
+   cd 你的專案名稱
+   ```
+   這會把模板的所有檔案下載到一個以你專案命名的新資料夾裡，並且直接把你帶進那個資料夾。
+
+到這裡你就有自己的一份副本了，可以往下看「先選擇運作模式」。
+
+### 如果你沒有「Use this template」這個按鈕
+
+有些公司的 GitHub 帳號會把這個按鈕關掉。如果是這樣：
+
+1. 自己在 GitHub 上建立一個全新的空 repository（建立時不要加 README、license 或 `.gitignore`，讓它完全空白）。複製它的網址。
+2. 打開終端機，切換到你想放這個專案的資料夾，執行：
+   ```bash
+   git clone https://github.com/HankHub777/guided-local-workbench-template.git my-project
+   cd my-project
+   ```
+   （「clone」就是下載一份 repository 的完整副本——這一個指令就把新手通常還要另外打 `git init`、`git remote add` 才能做到的事一次做完了，這也是為什麼這裡不用分開列出那兩個指令。）
+3. 把這份副本改成連到你自己的空 repository（而不是原本的模板），再把所有東西上傳上去：
+   ```bash
+   git remote remove origin
+   git remote add origin https://github.com/你的帳號/你的新repository名稱.git
+   git push -u origin main
+   ```
+
+不管哪一種方式，結果都一樣：你會有一份完全屬於自己、在自己 GitHub 帳號底下、跟原本模板沒有任何連結的專案。
+
 ## 為什麼需要模板，而不只是一份單檔 HTML
 
 單檔 HTML 加上持續與 LLM 對話，很適合一次性、個人使用的小工具。這個模板處理的是另一種情境：工具會持續修改、使用真實資料、交給其他人，或有一天需要升級成正式服務。
@@ -25,7 +68,7 @@
 
 這些文件不會消除 chatbot 的錯誤或幻覺；它們將錯誤限制在較小、較明確、可驗證與可回退的範圍。專案的控制權不再依賴某一段聊天記錄或某一個模型，而在任何人都能檢查的檔案中。
 
-**已經用單檔 HTML 累積了不少實際成果，想接進這個結構繼續開發、不想從頭來過？** 見 [docs/MIGRATION_FROM_SINGLE_FILE.md](docs/MIGRATION_FROM_SINGLE_FILE.md)，裡面是一步一步的流程，會告訴你目前情況該用哪一份可以直接複製貼上的 prompt。
+**已經用單檔 HTML 累積了不少實際成果，想接進這個結構繼續開發、不想從頭來過？** 見 [docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md](docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md)，裡面是一步一步的流程，會告訴你目前情況該用哪一份可以直接複製貼上的 prompt。
 
 ## 對使用者、工程與組織的效益
 
@@ -57,7 +100,7 @@
 
 同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
 
-- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`docs/MIGRATION_FROM_SINGLE_FILE.md`、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`docs/MIGRATION_FROM_SINGLE_FILE.md`、`docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md`、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
 - **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py`、`build_context_bundle.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。`LLM_CONTEXT_BUNDLE.md` 是產物，不進 Git，由 `scripts/build_context_bundle.py` 重建。
 
 完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
