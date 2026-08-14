@@ -13,6 +13,7 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `docs/FILE_MANIFEST.md` — its table structure and row set (new instance-specific files still get added as new rows)
 - `docs/UPGRADE_PATH.md` — its trigger conditions
 - `docs/TEMPLATE_BOUNDARY.md` (this file)
+- `docs/MIGRATION_FROM_SINGLE_FILE.md`
 - `.gitignore`
 - `LICENSE`
 - `scripts/apply_update.py`

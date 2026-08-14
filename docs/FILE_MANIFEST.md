@@ -15,6 +15,7 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 | `ai/ARCHITECTURE_RULES.md` | Canonical | Dependency direction and local-to-managed boundaries. | Changing code structure or data flow. |
 | `docs/FILE_MANIFEST.md` | Canonical (structure) | This plain-language inventory of the shared template base. | Orienting a person or agent. |
 | `docs/TEMPLATE_BOUNDARY.md` | Canonical | Defines which files are template contract vs. project content, and how to propose a template-level change. | Before any change; whenever a request seems to touch a canonical file. |
+| `docs/MIGRATION_FROM_SINGLE_FILE.md` | Canonical | Guided, prompt-by-prompt process (with routing) for bringing an existing single-file HTML prototype into this structure. | Someone arrives with a working single-file HTML prototype and wants to continue building it here. |
 | `docs/DATA_CONTRACT.md` | Instance | Dataset ownership, schema, validation, and lineage. | Adding or changing data. |
 | `docs/UPGRADE_PATH.md` | Canonical | Objective triggers for adding a server, database, or managed service. | A request needs shared access, scheduling, writes, auth, or audit. |
 | `docs/DECISIONS.md` | Instance | Durable architectural decisions (ADRs). | A choice constrains future work. |

@@ -25,6 +25,8 @@ The template's goal isn't to turn everyone into an agent engineer — it's to le
 
 These documents don't eliminate a chatbot's mistakes or hallucinations; they confine errors to a smaller, more explicit, verifiable, and reversible scope. Control over the project no longer depends on one chat transcript or one model — it lives in files anyone can inspect.
 
+**Already have real work built up as a single-file HTML prototype and want to bring it in here instead of starting over?** See [docs/MIGRATION_FROM_SINGLE_FILE.md](docs/MIGRATION_FROM_SINGLE_FILE.md) for a guided, prompt-by-prompt process — it tells you exactly which copy-paste prompt to use for your situation.
+
 ## Benefits for users, engineering, and the organization
 
 For the user, the template lowers the barrier to *keeping going*: without understanding the full software architecture, they can still know where data lives, which files must not be hand-edited, how to ask the chatbot for a small change, and how to verify the result.
@@ -55,7 +57,7 @@ Don't enable a backend or database just because the directory exists. See [docs/
 
 The same person may use this template to build more than one local workbench over time, and clones get handed off between colleagues. If the template's own contract files get casually rewritten as part of ordinary changes, each clone gradually drifts into a different shape, and versions stop matching each other at handoff.
 
-- **Template contract (don't change its rules or structure while building a single tool)**: `README.md`, `README.zh-TW.md`, `AGENTS.md`, `ai/ARCHITECTURE_RULES.md`, the table structure of `docs/FILE_MANIFEST.md`, the upgrade triggers in `docs/UPGRADE_PATH.md`, `.gitignore`, `LICENSE`, `scripts/apply_update.py`, `updates/README.md`, `scripts/build_context_bundle.py`.
+- **Template contract (don't change its rules or structure while building a single tool)**: `README.md`, `README.zh-TW.md`, `AGENTS.md`, `ai/ARCHITECTURE_RULES.md`, the table structure of `docs/FILE_MANIFEST.md`, the upgrade triggers in `docs/UPGRADE_PATH.md`, `docs/MIGRATION_FROM_SINGLE_FILE.md`, `.gitignore`, `LICENSE`, `scripts/apply_update.py`, `updates/README.md`, `scripts/build_context_bundle.py`.
 - **Project content (keep filling in and changing this while building the tool)**: `ai/PROJECT_CONTEXT.md`, `docs/DATA_CONTRACT.md`, `docs/DECISIONS.md`, `config/*.example.json`, and `web/`, `server/`, `shared/`, `scripts/` (except `apply_update.py` and `build_context_bundle.py`), `data/`, `tests/`. `CHANGELOG.md` is only ever appended to by `scripts/apply_update.py` — no update package should overwrite it directly. `LLM_CONTEXT_BUNDLE.md` is a build artifact, not tracked in Git, rebuilt by `scripts/build_context_bundle.py`.
 
 For the full list, how to classify a file, and the process for when the template itself seems to need a change, see [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md).

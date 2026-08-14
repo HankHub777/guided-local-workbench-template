@@ -33,6 +33,7 @@ CANONICAL_PATHS = {
     "docs/FILE_MANIFEST.md",
     "docs/UPGRADE_PATH.md",
     "docs/TEMPLATE_BOUNDARY.md",
+    "docs/MIGRATION_FROM_SINGLE_FILE.md",
     ".gitignore",
     "LICENSE",
     "scripts/apply_update.py",

@@ -25,6 +25,8 @@
 
 這些文件不會消除 chatbot 的錯誤或幻覺；它們將錯誤限制在較小、較明確、可驗證與可回退的範圍。專案的控制權不再依賴某一段聊天記錄或某一個模型，而在任何人都能檢查的檔案中。
 
+**已經用單檔 HTML 累積了不少實際成果，想接進這個結構繼續開發、不想從頭來過？** 見 [docs/MIGRATION_FROM_SINGLE_FILE.md](docs/MIGRATION_FROM_SINGLE_FILE.md)，裡面是一步一步的流程，會告訴你目前情況該用哪一份可以直接複製貼上的 prompt。
+
 ## 對使用者、工程與組織的效益
 
 對使用者而言，模板降低的是「持續做下去」的門檻：不需要理解完整軟體架構，也能知道資料放哪裡、哪些檔案不能手改、如何要求 chatbot 做小改動，以及如何驗證結果。
@@ -55,7 +57,7 @@
 
 同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
 
-- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`docs/MIGRATION_FROM_SINGLE_FILE.md`、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
 - **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py`、`build_context_bundle.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。`LLM_CONTEXT_BUNDLE.md` 是產物，不進 Git，由 `scripts/build_context_bundle.py` 重建。
 
 完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
