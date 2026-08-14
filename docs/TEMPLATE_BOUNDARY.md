@@ -7,6 +7,7 @@ This template is cloned once per local workbench project. The same person may bu
 These define the template mechanism itself. Do not rewrite their rules or structure as part of building a specific tool — only as a deliberate, confirmed template-level change (see below).
 
 - `README.md`
+- `README.zh-TW.md`
 - `AGENTS.md`
 - `ai/ARCHITECTURE_RULES.md`
 - `docs/FILE_MANIFEST.md` — its table structure and row set (new instance-specific files still get added as new rows)

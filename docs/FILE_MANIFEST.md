@@ -8,7 +8,8 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 
 | Path | Canonical / Instance | Why it exists | Read or update when |
 | --- | --- | --- | --- |
-| `README.md` | Canonical | Explains the template, operating modes, and core rules. | Starting the project or changing its user-facing setup. |
+| `README.md` | Canonical | Explains the template, operating modes, and core rules. English is the default language. | Starting the project or changing its user-facing setup. |
+| `README.zh-TW.md` | Canonical | Traditional Chinese translation of `README.md`; must stay in sync with it. | Whenever `README.md` changes. |
 | `AGENTS.md` | Canonical | Required collaboration and safe-change rules for chatbot- or agent-assisted changes. | Before every change. |
 | `ai/PROJECT_CONTEXT.md` | Instance | Product intent, users, definition of done, and questions that determine the operating mode. | Scoping a feature. |
 | `ai/ARCHITECTURE_RULES.md` | Canonical | Dependency direction and local-to-managed boundaries. | Changing code structure or data flow. |

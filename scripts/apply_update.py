@@ -27,6 +27,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # Keep in sync with docs/TEMPLATE_BOUNDARY.md's "Canonical files" list.
 CANONICAL_PATHS = {
     "README.md",
+    "README.zh-TW.md",
     "AGENTS.md",
     "ai/ARCHITECTURE_RULES.md",
     "docs/FILE_MANIFEST.md",
