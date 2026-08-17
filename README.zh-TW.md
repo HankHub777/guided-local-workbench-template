@@ -110,7 +110,7 @@
 在不能使用 agent 的環境中，開始對話前先執行：
 
 ```bash
-python3 scripts/build_context_bundle.py
+python scripts/build_context_bundle.py
 ```
 
 會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（裡面依序放了 6 份文件，各自在做什麼都有一行說明：協作規則、哪些檔案不能隨便改、整個專案的檔案索引、這個工具是做什麼的、程式架構的邊界、前端設計規則的預設值），把這一份整份上傳或貼給 chatbot，就不用逐一上傳六個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
