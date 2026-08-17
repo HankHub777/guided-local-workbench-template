@@ -30,6 +30,7 @@ CANONICAL_PATHS = {
     "README.zh-TW.md",
     "AGENTS.md",
     "ai/ARCHITECTURE_RULES.md",
+    "ai/DESIGN_RULES.md",
     "docs/FILE_MANIFEST.md",
     "docs/UPGRADE_PATH.md",
     "docs/TEMPLATE_BOUNDARY.md",

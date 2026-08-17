@@ -34,6 +34,7 @@ BUNDLE_FILES = [
     "docs/FILE_MANIFEST.md",
     "ai/PROJECT_CONTEXT.md",
     "ai/ARCHITECTURE_RULES.md",
+    "ai/DESIGN_RULES.md",
 ]
 
 # One line per bundled file, telling the reader what it's for without having
@@ -44,6 +45,7 @@ BUNDLE_FILE_PURPOSES = {
     "docs/FILE_MANIFEST.md": "Index of every file in the project and what it's for.",
     "ai/PROJECT_CONTEXT.md": "What this specific tool is for, who it's for, and what \"done\" means.",
     "ai/ARCHITECTURE_RULES.md": "Code structure rules — what's allowed to depend on what.",
+    "ai/DESIGN_RULES.md": "Default frontend visual rules — typography, color/contrast, spacing, tables, media fit.",
 }
 
 # SHA-256 of a file's content exactly as the template ships it, unedited.
