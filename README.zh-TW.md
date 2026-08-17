@@ -100,7 +100,7 @@
 
 同一個人可能會用這個模板建立不只一個本機工作台，clone 之間也會在同事間交接。若模板本身的契約文件被當成一般變動範圍隨手改掉，每份 clone 就會逐漸漂移成不同的樣子，交接時版本互不一致。
 
-- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`docs/MIGRATION_FROM_SINGLE_FILE.md`、`docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md`、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
+- **模板契約（不因建置單一工具而改動規則或結構）**：`README.md`、`README.zh-TW.md`、`AGENTS.md`、`ai/ARCHITECTURE_RULES.md`、`ai/DESIGN_RULES.md`、`docs/FILE_MANIFEST.md` 的表格結構、`docs/UPGRADE_PATH.md` 的升級條件、`docs/MIGRATION_FROM_SINGLE_FILE.md`、`docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md`、`.gitignore`、`LICENSE`、`scripts/apply_update.py`、`updates/README.md`、`scripts/build_context_bundle.py`。
 - **專案內容（建置這個工具時應持續填寫、修改）**：`ai/PROJECT_CONTEXT.md`、`docs/DATA_CONTRACT.md`、`docs/DECISIONS.md`、`config/*.example.json`，以及 `web/`, `server/`, `shared/`, `scripts/`（`apply_update.py`、`build_context_bundle.py` 除外）, `data/`, `tests/`。`CHANGELOG.md` 只由 `scripts/apply_update.py` 附加內容，任何更新包都不應直接覆寫它。`LLM_CONTEXT_BUNDLE.md` 是產物，不進 Git，由 `scripts/build_context_bundle.py` 重建。
 
 完整清單、判斷方式與「發現模板本身該改」時的處理流程，見 [docs/TEMPLATE_BOUNDARY.md](docs/TEMPLATE_BOUNDARY.md)。
@@ -113,7 +113,7 @@
 python3 scripts/build_context_bundle.py
 ```
 
-會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（裡面依序放了 5 份文件，各自在做什麼都有一行說明：協作規則、哪些檔案不能隨便改、整個專案的檔案索引、這個工具是做什麼的、程式架構的邊界），把這一份整份上傳或貼給 chatbot，就不用逐一上傳五個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
+會產生單一檔案 `LLM_CONTEXT_BUNDLE.md`（裡面依序放了 6 份文件，各自在做什麼都有一行說明：協作規則、哪些檔案不能隨便改、整個專案的檔案索引、這個工具是做什麼的、程式架構的邊界、前端設計規則的預設值），把這一份整份上傳或貼給 chatbot，就不用逐一上傳六個檔案、也不容易撞到聊天工具的上傳限制。這份 bundle 是可重建的產物，不進 Git；每次開新對話前重新執行一次即可，不用擔心過期。
 
 如果產生的檔案開頭出現「still template placeholder content」這樣的提醒，代表「這個工具是做什麼的」那份文件（`ai/PROJECT_CONTEXT.md`）你還沒填成自己專案的真實內容、還是模板出廠時的通用範例。看到這個提醒，代表 chatbot 現在拿到的還不是「你這個工具」的真實資訊——找時間把那份文件改成寫你自己的專案，chatbot 給的建議才會真的對你有用。
 

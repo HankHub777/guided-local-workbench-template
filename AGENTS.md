@@ -6,8 +6,8 @@ This repository is a guided template for building local workbenches with an LLM 
 
 ## Non-negotiable rules
 
-- Read `docs/FILE_MANIFEST.md`, `ai/PROJECT_CONTEXT.md`, `ai/ARCHITECTURE_RULES.md`, and the relevant document in `docs/` before editing.
-- Treat `README.md`, this file, `ai/ARCHITECTURE_RULES.md`, and `docs/FILE_MANIFEST.md`'s structure as template contract, not project content, per `docs/TEMPLATE_BOUNDARY.md`. Do not rewrite their rules or structure as part of an ordinary feature/data/UI change.
+- Read `docs/FILE_MANIFEST.md`, `ai/PROJECT_CONTEXT.md`, `ai/ARCHITECTURE_RULES.md`, `ai/DESIGN_RULES.md`, and the relevant document in `docs/` before editing.
+- Treat `README.md`, this file, `ai/ARCHITECTURE_RULES.md`, `ai/DESIGN_RULES.md`, and `docs/FILE_MANIFEST.md`'s structure as template contract, not project content, per `docs/TEMPLATE_BOUNDARY.md`. Do not rewrite their rules or structure as part of an ordinary feature/data/UI change.
 - Treat `shared/` as the canonical contract. Do not duplicate types in `web/`, `server/`, or `scripts/`.
 - Validate untrusted runtime data. TypeScript types alone do not validate JSON, spreadsheets, forms, or API responses.
 - Do not put secrets, personal data samples, access tokens, or production connection strings in tracked files.

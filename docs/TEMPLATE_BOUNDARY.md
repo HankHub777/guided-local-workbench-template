@@ -10,6 +10,7 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 - `README.zh-TW.md`
 - `AGENTS.md`
 - `ai/ARCHITECTURE_RULES.md`
+- `ai/DESIGN_RULES.md`
 - `docs/FILE_MANIFEST.md` — its table structure and row set (new instance-specific files still get added as new rows)
 - `docs/UPGRADE_PATH.md` — its trigger conditions
 - `docs/TEMPLATE_BOUNDARY.md` (this file)

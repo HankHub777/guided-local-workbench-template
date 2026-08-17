@@ -13,6 +13,7 @@ This is the short map for ordinary users, LLM chatbots, and AI agents. Read this
 | `AGENTS.md` | Canonical | Required collaboration and safe-change rules for chatbot- or agent-assisted changes. | Before every change. |
 | `ai/PROJECT_CONTEXT.md` | Instance | Product intent, users, definition of done, and questions that determine the operating mode. | Scoping a feature. |
 | `ai/ARCHITECTURE_RULES.md` | Canonical | Dependency direction and local-to-managed boundaries. | Changing code structure or data flow. |
+| `ai/DESIGN_RULES.md` | Canonical | Default frontend visual rules — typography, color/contrast, spacing, tables, media fit. | Building or changing any UI in `web/`. |
 | `docs/FILE_MANIFEST.md` | Canonical (structure) | This plain-language inventory of the shared template base. | Orienting a person or agent. |
 | `docs/TEMPLATE_BOUNDARY.md` | Canonical | Defines which files are template contract vs. project content, and how to propose a template-level change. | Before any change; whenever a request seems to touch a canonical file. |
 | `docs/MIGRATION_FROM_SINGLE_FILE.md` | Canonical | Guided, prompt-by-prompt process (with routing) for bringing an existing single-file HTML prototype into this structure. English is the default language. | Someone arrives with a working single-file HTML prototype and wants to continue building it here. |
