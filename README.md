@@ -110,7 +110,7 @@ For the full list, how to classify a file, and the process for when the template
 In an environment where you can't use an agent, run this before starting a conversation:
 
 ```bash
-python3 scripts/build_context_bundle.py
+python scripts/build_context_bundle.py
 ```
 
 This produces a single file, `LLM_CONTEXT_BUNDLE.md` (containing six documents in order, each with a one-line description of what it's for: collaboration rules, which files must not be casually changed, the whole project's file index, what this tool is for, the boundaries of the code architecture, and the default frontend design rules). Upload or paste this one file to your chatbot, instead of uploading six files one by one — and it's less likely to hit your chat tool's upload limit. This bundle is a rebuildable artifact and isn't tracked in Git; just run it again before starting a new conversation, and you don't need to worry about it going stale.
