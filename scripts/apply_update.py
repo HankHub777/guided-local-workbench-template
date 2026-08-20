@@ -36,11 +36,19 @@ CANONICAL_PATHS = {
     "docs/TEMPLATE_BOUNDARY.md",
     "docs/MIGRATION_FROM_SINGLE_FILE.md",
     "docs/MIGRATION_FROM_SINGLE_FILE.zh-TW.md",
+    "docs/UPSTREAM_EXTRACTION.md",
+    "docs/ENTERPRISE_ENVIRONMENT.md",
+    "docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md",
     ".gitignore",
+    ".gitattributes",
     "LICENSE",
+    "scripts/README.md",
     "scripts/apply_update.py",
-    "updates/README.md",
     "scripts/build_context_bundle.py",
+    "scripts/check_environment.py",
+    "scripts/scan_repo_for_remote_review.py",
+    "scripts/scan_public_candidates.py",
+    "updates/README.md",
 }
 
 # Never overwritten by an incoming package; only this script's own append step touches it.
