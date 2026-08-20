@@ -14,6 +14,16 @@ This repository is a guided template for building local workbenches with an LLM 
 - Keep local mode usable without a server or database.
 - For every change, update the smallest relevant documentation and give a manual verification step.
 
+## Situational guidance
+
+The rules above always apply. These apply only when the situation matches:
+
+- Building or changing UI in `web/`: also read `docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md` (layout, hierarchy, chart choice, anti-template review) alongside `ai/DESIGN_RULES.md`.
+- The workflow must run on a company-managed or restricted machine (proxy, CA, mirror, offline, firewall): read `docs/ENTERPRISE_ENVIRONMENT.md` before treating it as an ordinary bug.
+- Extracting reusable lessons from a mature or production instance clone back into this template: read `docs/UPSTREAM_EXTRACTION.md` first; do not port instance-specific content directly.
+
+`docs/FILE_MANIFEST.md`'s "Read or update when" column is the general index for anything not covered above.
+
 ## Change protocol
 
 1. State the user-visible outcome and files to change.

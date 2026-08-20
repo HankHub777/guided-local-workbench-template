@@ -28,6 +28,18 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # (a `shared/` contract, code, data) — those get attached separately, only
 # when the task actually needs them. Keep in rough reading order: rules,
 # boundary, index, product intent, architecture.
+#
+# Also deliberately excludes canonical docs that only apply in a specific
+# situation rather than every session: docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md,
+# docs/ENTERPRISE_ENVIRONMENT.md, docs/UPSTREAM_EXTRACTION.md. Bundling
+# enterprise-proxy or upstream-port guidance into every session's context,
+# most of which never touch those situations, would defeat the point of a
+# small bundle. They are still canonical (see docs/TEMPLATE_BOUNDARY.md) and
+# stay discoverable through docs/FILE_MANIFEST.md's "Read or update when"
+# column (bundled below) and AGENTS.md's "Situational guidance" section —
+# attach the specific doc only when the task actually matches. A future
+# canonical addition should make this same always-bundled-core vs.
+# situational-specialist call explicitly, not by omission.
 BUNDLE_FILES = [
     "AGENTS.md",
     "docs/TEMPLATE_BOUNDARY.md",

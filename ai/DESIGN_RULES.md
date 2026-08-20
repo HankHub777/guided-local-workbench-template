@@ -2,6 +2,8 @@
 
 Default frontend visual rules for `web/`. Like `ai/ARCHITECTURE_RULES.md`, this file is template contract, not project content — see `docs/TEMPLATE_BOUNDARY.md`. Adjust or override a value for a specific tool's audience or data, but log anything beyond a small tuning tweak (base font family, contrast target, type scale ratio) in `docs/DECISIONS.md`. Do not rewrite this file's rules or structure as part of an ordinary feature/data/UI change.
 
+For how to structure the analytical experience itself — information hierarchy, viewport budget, chart type selection, and when a visual phase is actually done — see `docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md`. This file gives defaults; that playbook gives reasoning.
+
 ## Typography
 
 - Type scale: one modular scale; no more than 4 distinct font sizes visible in any single screen.
