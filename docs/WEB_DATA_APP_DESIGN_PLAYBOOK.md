@@ -155,7 +155,24 @@ Before calling a visual phase complete, explicitly search for common generated-d
 
 The fix is not "make it plain." Every visible choice should be explainable by hierarchy, comparison, interaction, or state.
 
-## 13. Phase workflow for a small web data app
+## 13. Compare against a curated reference before building
+
+Don't design a screen from memory or guesswork — most "off" spacing, type, and color choices come from inventing a number instead of looking one up. Before building a screen, ask three questions:
+
+1. What kind of screen is this closest to (analytical console, admin dashboard, data table, detail/record view, form)?
+2. Which reference below is the closest match? Open it and find the equivalent screen.
+3. Copy that screen's type scale, spacing, color usage, and interaction pattern in order — don't invent a value that isn't in `ai/DESIGN_RULES.md`'s tokens or the closest reference.
+
+| Screen type | Reference | What to take from it |
+| --- | --- | --- |
+| Analytical console / admin dashboard | [shadcn-admin](https://github.com/satnaing/shadcn-admin), [TailAdmin](https://github.com/TailAdmin/free-nextjs-admin-dashboard) | Overall layout allocation, light/dark handling, table/filter/pagination patterns |
+| Data-dense components, charts | [Tremor](https://github.com/tremorlabs/tremor), [shadcn/ui examples](https://ui.shadcn.com/examples) | Chart and stat-tile structure, accessible interaction details |
+| Component primitives | [Radix primitives](https://www.radix-ui.com/primitives), [Mantine UI](https://ui.mantine.dev/) | Correct state handling (focus, disabled, loading) for a component you're about to build from scratch |
+| General visual inspiration | [Mobbin](https://mobbin.com/), [Dribbble](https://dribbble.com/) | Real production screenshots when nothing above matches the screen's shape |
+
+This complements the anti-template review above rather than replacing it: copying real values from a real product's equivalent screen is how you avoid the generated-dashboard habits in section 12 — a decorative-icon-per-metric habit doesn't survive contact with what an actual production dashboard looks like.
+
+## 14. Phase workflow for a small web data app
 
 A useful sequence is:
 
@@ -172,7 +189,7 @@ A useful sequence is:
 
 Every web phase should require a production build, not only a successful development-server screen.
 
-## 14. Transfer checklist
+## 15. Transfer checklist
 
 Before reusing this approach, answer:
 
