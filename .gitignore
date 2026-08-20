@@ -9,6 +9,17 @@ coverage/
 *.log
 .DS_Store
 
+# Local environments, caches, compiler state, and generated review evidence
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.tsbuildinfo
+artifacts/
+
 # LLM-delivered update packages (not part of the template contract)
 updates/incoming/*
 !updates/incoming/.gitkeep
