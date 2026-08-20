@@ -4,6 +4,17 @@
 
 This repository is a guided template for building local workbenches with an LLM chatbot. It may grow into a managed product. Preserve that upgrade path without introducing services that the current mode does not require.
 
+## Chatbot-only and agent-driven sessions follow the same rules
+
+Everything in this file applies the same way whether an LLM chatbot with no file access or a coding agent with direct file access is reading it. This repository does not have a separate agent-oriented mode or a heavier governance track for agent sessions — see ADR-006 in `docs/DECISIONS.md` for why that was deliberately not adopted.
+
+The only difference is mechanical, not procedural:
+
+- **Chatbot-only, no file access**: use `scripts/build_context_bundle.py` to hand over context and `scripts/apply_update.py` to apply an exported update package — see README.md's "Working with an LLM chatbot" section. This exists because the chatbot cannot touch files directly.
+- **Agent with direct file access**: skip that bootstrapping. Read `docs/FILE_MANIFEST.md` and the relevant canonical docs directly, then edit tracked files yourself.
+
+Direct file access changes *how* a change gets made, not *who* approves it: the Change protocol below, human review of the diff, and the canonical-file confirmation rule apply identically either way. This template's guardrail is the human in the loop, not automated review gates or a task/backlog governance layer — do not introduce those to compensate for having agent access; that would be a different, larger project, not this one (see `docs/DECISIONS.md` ADR-006).
+
 ## Non-negotiable rules
 
 - Read `docs/FILE_MANIFEST.md`, `ai/PROJECT_CONTEXT.md`, `ai/ARCHITECTURE_RULES.md`, `ai/DESIGN_RULES.md`, and the relevant document in `docs/` before editing.
