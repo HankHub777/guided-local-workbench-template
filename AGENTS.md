@@ -24,6 +24,8 @@ Direct file access changes *how* a change gets made, not *who* approves it: the 
 - Do not put secrets, personal data samples, access tokens, or production connection strings in tracked files.
 - Keep local mode usable without a server or database.
 - For every change, update the smallest relevant documentation and give a manual verification step.
+- A verification/QA script's output that the user needs to copy back to the chatbot must not be able to disappear before they can read it. A script run directly (`python check.py` typed into an already-open terminal) must pause for a keypress before exiting — skip the pause when stdin is not a TTY, so it never hangs in CI/automation — per `scripts/apply_update.py`'s `pause_for_copy()`. A `.cmd`/`.bat` launcher generated so the user can double-click instead of typing a command (e.g. `run_xxx.cmd` wrapping `python xxx.py`) must end with its own native `pause` line: Windows closes that console the instant the batch file's last line finishes, regardless of whether the wrapped script paused on its own, so the launcher's own pause — not the wrapped script's — is what actually protects a `[PASS]`/`[FAIL]` line the user needs to copy.
+- A verification/QA script must not report acceptance criteria as failed solely because of enterprise network friction (an authenticated proxy, TLS interception, DNS, or a firewall). Distinguish "the environment blocked this check" from "the change is broken" — see `docs/ENTERPRISE_ENVIRONMENT.md`.
 
 ## Situational guidance
 

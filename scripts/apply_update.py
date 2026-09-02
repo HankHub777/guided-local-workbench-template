@@ -430,6 +430,25 @@ def check_boundary_drift() -> None:
             print(f"  in script but not doc: {sorted(missing_in_doc)}")
 
 
+def pause_for_copy() -> None:
+    """Give the user a chance to copy the text printed just above this call
+    before the process exits.
+
+    Some users run this script by double-clicking it. On Windows that opens
+    a console that closes itself the instant the process exits, destroying
+    the "paste this back into the chatbot" text before anyone can select it
+    (see README.md's "Applying the chatbot's output locally" and AGENTS.md's
+    non-negotiable rules). Skip the pause when stdin is not a real terminal
+    (piped input, CI, automation) so nothing hangs waiting for a keypress
+    that will never come.
+    """
+    if sys.stdin.isatty():
+        try:
+            input("\nPress Enter to close this window after copying the text above...")
+        except EOFError:
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Apply an LLM-provided update package. See updates/README.md.")
     parser.add_argument("--source", type=Path, default=PROJECT_ROOT / "updates" / "incoming")
@@ -513,6 +532,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"\n----- {archive_dir.relative_to(PROJECT_ROOT) / 'sync_note.md'} -----")
         print(sync_note, end="")
         print("-----")
+        pause_for_copy()
         return 2 if had_error else 0
 
 

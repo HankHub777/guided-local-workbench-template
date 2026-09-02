@@ -62,6 +62,14 @@ When checking a service bound to `127.0.0.1`/loopback, prefer a direct loopback 
 
 This prevents a healthy local service from being misclassified by an authenticated proxy response such as HTTP 407 while preserving enterprise policy for non-local traffic.
 
+## Verification scripts written for a specific change are not exempt
+
+This boundary is not limited to `scripts/check_environment.py`. Any verification or QA script written to satisfy a change's acceptance criteria (see AGENTS.md's Change protocol) must apply the same discipline:
+
+- A network-dependent check failing with an authenticated-proxy response (HTTP 407), a TLS/certificate error, a DNS failure, or a firewall block is an environment-boundary event, not proof the change itself is broken. Report it as such — name what failed and why it looks environmental — instead of marking the acceptance criterion FAIL and stopping there.
+- Prefer checks that need no new outbound network access at all (local fixtures, a loopback service, static analysis) when the acceptance criterion allows it.
+- If a genuinely new outbound dependency is required (a new package registry, an external API), name it explicitly to the user rather than relying on it silently succeeding in every environment.
+
 ## Safe automation boundary
 
 The tool may safely automate deterministic local checks such as:
