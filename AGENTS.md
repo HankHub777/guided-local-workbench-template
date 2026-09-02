@@ -34,6 +34,7 @@ The rules above always apply. These apply only when the situation matches:
 - Building or changing UI in `web/`: also read `docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md` (layout, hierarchy, chart choice, anti-template review) alongside `ai/DESIGN_RULES.md`.
 - The workflow must run on a company-managed or restricted machine (proxy, CA, mirror, offline, firewall): read `docs/ENTERPRISE_ENVIRONMENT.md` before treating it as an ordinary bug.
 - Extracting reusable lessons from a mature or production instance clone back into this template: read `docs/UPSTREAM_EXTRACTION.md` first; do not port instance-specific content directly.
+- Someone arrives with a working single-file HTML prototype and wants to continue building it here: read `docs/MIGRATION_FROM_SINGLE_FILE.md` (or its `.zh-TW` translation) first; do not restart the tool from scratch.
 
 `docs/FILE_MANIFEST.md`'s "Read or update when" column is the general index for anything not covered above.
 

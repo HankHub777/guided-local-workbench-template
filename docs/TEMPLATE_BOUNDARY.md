@@ -32,14 +32,14 @@ These define the template mechanism itself. Do not rewrite their rules or struct
 
 `scripts/apply_update.py` (see [`updates/README.md`](../updates/README.md)) enforces this boundary automatically whenever an LLM-delivered update package is applied: files outside this list apply without asking, but any change to a file on this list — or any deletion at all — always pauses for explicit confirmation first.
 
-`scripts/build_context_bundle.py` generates `LLM_CONTEXT_BUNDLE.md`, a single-file concatenation of `AGENTS.md`, this file, `docs/FILE_MANIFEST.md`, `ai/PROJECT_CONTEXT.md`, `ai/ARCHITECTURE_RULES.md`, and `ai/DESIGN_RULES.md` (its own `BUNDLE_FILES` constant is the source of truth) for handing to an LLM chatbot at the start of a session — see README.md's "LLM chatbot 工作方式".
+`scripts/build_context_bundle.py` generates `LLM_CONTEXT_BUNDLE.md` by concatenating every file `docs/FILE_MANIFEST.md`'s "Always-present foundation" table marks `Core` in its Bundle column, in table order, for handing to an LLM chatbot at the start of a session — see README.md's "LLM chatbot 工作方式". That table is the only source of truth; the script carries no file list of its own, so marking a row `Core` there is the entire change needed to add a file to the bundle.
 
 ## Canonical tiers: always-bundled core vs. situational specialist
 
 The canonical list above is bigger than what actually belongs in every chatbot session. Every new canonical file must be assigned to one of two tiers — do not leave it undecided; an unassigned file looks like drift, not a decision (this rule exists because that happened once — see ADR-005 in `docs/DECISIONS.md`):
 
-- **Always-bundled core** — needed regardless of what the session is about. Add it to `scripts/build_context_bundle.py`'s `BUNDLE_FILES`.
-- **Situational specialist** — only needed for a specific kind of task (an enterprise-network constraint, an upstream port, UI work). Keep it out of `BUNDLE_FILES` so the default bundle stays small, but make it discoverable two other ways instead: add a row to `docs/FILE_MANIFEST.md` with a concrete "Read or update when" trigger, and name the same trigger in `AGENTS.md`'s "Situational guidance" section.
+- **Always-bundled core** — needed regardless of what the session is about. Mark it `Core` in `docs/FILE_MANIFEST.md`'s Bundle column.
+- **Situational specialist** — only needed for a specific kind of task (an enterprise-network constraint, an upstream port, UI work). Mark it `—` in `docs/FILE_MANIFEST.md`'s Bundle column so the default bundle stays small, but make it discoverable two other ways instead: give its row a concrete "Read or update when" trigger, and name the same trigger in `AGENTS.md`'s "Situational guidance" section.
 
 Both tiers are equally canonical — the tier only controls whether a file rides along in every default handoff or gets found on demand.
 
