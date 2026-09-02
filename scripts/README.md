@@ -1,6 +1,6 @@
 # Scripts
 
-Scripts convert data or support repeatable local work. Each script must document inputs, outputs, error behaviour, and a safe re-run procedure.
+Scripts convert data or support repeatable local work. Each script must document inputs, outputs, error behaviour, and a safe re-run procedure. A script whose output the user must copy back to a chatbot must pause for a keypress before exiting in an interactive terminal (skip the pause when stdin is not a TTY) — see `apply_update.py`'s `pause_for_copy()` for the reference pattern.
 
 ## Canonical template helpers
 
