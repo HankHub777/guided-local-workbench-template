@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Build a single-file context bundle for handing to an LLM chatbot.
 
-Concatenates the template's canonical orientation files into one Markdown
-file so a non-technical user can upload/paste one document instead of
-several, at the start of a chatbot session. See README.md's
-"LLM chatbot 工作方式" section for how it's used.
+Concatenates every file docs/FILE_MANIFEST.md's "Always-present foundation"
+table marks `Core` in its Bundle column into one Markdown file, so a
+non-technical user can upload/paste one document instead of several, at the
+start of a chatbot session. See README.md's "LLM chatbot 工作方式" section
+for how it's used, and docs/FILE_MANIFEST.md for how to add or remove a
+file from the bundle — this script has no file list of its own.
 
 Usage:
     python scripts/build_context_bundle.py [--output PATH]
@@ -23,42 +25,66 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
-# Canonical orientation files an LLM chatbot needs before it can safely
-# reason about this project. Deliberately excludes task-specific files
-# (a `shared/` contract, code, data) — those get attached separately, only
-# when the task actually needs them. Keep in rough reading order: rules,
-# boundary, index, product intent, architecture.
-#
-# Also deliberately excludes canonical docs that only apply in a specific
-# situation rather than every session: docs/WEB_DATA_APP_DESIGN_PLAYBOOK.md,
-# docs/ENTERPRISE_ENVIRONMENT.md, docs/UPSTREAM_EXTRACTION.md. Bundling
-# enterprise-proxy or upstream-port guidance into every session's context,
-# most of which never touch those situations, would defeat the point of a
-# small bundle. They are still canonical (see docs/TEMPLATE_BOUNDARY.md) and
-# stay discoverable through docs/FILE_MANIFEST.md's "Read or update when"
-# column (bundled below) and AGENTS.md's "Situational guidance" section —
-# attach the specific doc only when the task actually matches. A future
-# canonical addition should make this same always-bundled-core vs.
-# situational-specialist call explicitly, not by omission.
-BUNDLE_FILES = [
-    "AGENTS.md",
-    "docs/TEMPLATE_BOUNDARY.md",
-    "docs/FILE_MANIFEST.md",
-    "ai/PROJECT_CONTEXT.md",
-    "ai/ARCHITECTURE_RULES.md",
-    "ai/DESIGN_RULES.md",
-]
+FILE_MANIFEST_PATH = PROJECT_ROOT / "docs" / "FILE_MANIFEST.md"
+MANIFEST_TABLE_HEADING = "## Always-present foundation"
+MANIFEST_EXPECTED_HEADER = ["Path", "Canonical / Instance", "Bundle", "Why it exists", "Read or update when"]
 
-# One line per bundled file, telling the reader what it's for without having
-# to infer it from the content alone.
-BUNDLE_FILE_PURPOSES = {
-    "AGENTS.md": "Rules to follow when helping change this project.",
-    "docs/TEMPLATE_BOUNDARY.md": "Which files are the template's own rules (do not rewrite them as a side effect of a feature request) vs. this project's own content (safe to change).",
-    "docs/FILE_MANIFEST.md": "Index of every file in the project and what it's for.",
-    "ai/PROJECT_CONTEXT.md": "What this specific tool is for, who it's for, and what \"done\" means.",
-    "ai/ARCHITECTURE_RULES.md": "Code structure rules — what's allowed to depend on what.",
-    "ai/DESIGN_RULES.md": "Default frontend visual rules — typography, color/contrast, spacing, tables, media fit.",
-}
+
+def parse_bundle_manifest() -> list[tuple[str, str]]:
+    """Return (path, purpose) pairs for every file marked ``Core`` in the
+    Bundle column of docs/FILE_MANIFEST.md's "Always-present foundation"
+    table, in table order.
+
+    That table is the single source of truth for what ships in
+    LLM_CONTEXT_BUNDLE.md — see ADR-005 and ADR-007 in docs/DECISIONS.md.
+    This script deliberately keeps no separate file list of its own, so a
+    file can never be canonical-but-forgotten by the bundle: every row must
+    say ``Core`` or ``—`` explicitly, or this function refuses to guess.
+    """
+    if not FILE_MANIFEST_PATH.is_file():
+        raise ValueError(f"missing {FILE_MANIFEST_PATH.relative_to(PROJECT_ROOT)}")
+
+    text = FILE_MANIFEST_PATH.read_text(encoding="utf-8")
+    if MANIFEST_TABLE_HEADING not in text:
+        raise ValueError(
+            f"{FILE_MANIFEST_PATH.name} is missing the '{MANIFEST_TABLE_HEADING}' section "
+            "that scripts/build_context_bundle.py parses for the bundle file list."
+        )
+    section = text.split(MANIFEST_TABLE_HEADING, 1)[1].split("\n## ", 1)[0]
+    table_rows = [line for line in section.splitlines() if line.strip().startswith("|")]
+    if len(table_rows) < 2:
+        raise ValueError(
+            f"could not find a table under '{MANIFEST_TABLE_HEADING}' in {FILE_MANIFEST_PATH.name}"
+        )
+
+    def split_row(row: str) -> list[str]:
+        return [cell.strip() for cell in row.strip().strip("|").split("|")]
+
+    header = split_row(table_rows[0])
+    if header != MANIFEST_EXPECTED_HEADER:
+        raise ValueError(
+            f"{FILE_MANIFEST_PATH.name}'s table header changed shape — expected "
+            f"{MANIFEST_EXPECTED_HEADER}, got {header}. Update "
+            "parse_bundle_manifest() in scripts/build_context_bundle.py to match."
+        )
+
+    core_files: list[tuple[str, str]] = []
+    for row in table_rows[2:]:  # skip header row and the "| --- |" separator
+        cells = split_row(row)
+        if len(cells) != len(MANIFEST_EXPECTED_HEADER):
+            raise ValueError(f"malformed row in {FILE_MANIFEST_PATH.name}'s table: {row!r}")
+        path_cell, _canonical_instance, bundle_cell, why_cell, _when_cell = cells
+        path = path_cell.strip("`")
+        if bundle_cell not in ("Core", "—"):
+            raise ValueError(
+                f"{FILE_MANIFEST_PATH.name} row for `{path}` has an unrecognized Bundle "
+                f"value {bundle_cell!r} (must be 'Core' or '—'). Every row must make this "
+                "call explicitly — see ADR-005 in docs/DECISIONS.md."
+            )
+        if bundle_cell == "Core":
+            core_files.append((path, why_cell))
+    return core_files
+
 
 # SHA-256 of a file's content exactly as the template ships it, unedited.
 # Used to warn the reader when a file that's supposed to be filled in with
@@ -118,19 +144,20 @@ def is_unedited_default(path: str, content: str) -> bool:
 
 
 def build_bundle() -> str:
-    missing = [path for path in BUNDLE_FILES if not (PROJECT_ROOT / path).is_file()]
+    bundle_files = parse_bundle_manifest()
+    paths = [path for path, _purpose in bundle_files]
+
+    missing = [path for path in paths if not (PROJECT_ROOT / path).is_file()]
     if missing:
         raise FileNotFoundError(
-            "missing canonical source file(s), refusing to produce a partial bundle: "
-            + ", ".join(missing)
+            "docs/FILE_MANIFEST.md marks these files Core but they don't exist, "
+            "refusing to produce a partial bundle: " + ", ".join(missing)
         )
 
-    contents = {path: (PROJECT_ROOT / path).read_text(encoding="utf-8") for path in BUNDLE_FILES}
-    still_default = [path for path in BUNDLE_FILES if is_unedited_default(path, contents[path])]
+    contents = {path: (PROJECT_ROOT / path).read_text(encoding="utf-8") for path in paths}
+    still_default = [path for path in paths if is_unedited_default(path, contents[path])]
 
-    file_list = "\n".join(
-        f"- `{path}` — {BUNDLE_FILE_PURPOSES.get(path, '(no description)')}" for path in BUNDLE_FILES
-    )
+    file_list = "\n".join(f"- `{path}` — {purpose}" for path, purpose in bundle_files)
     if still_default:
         warning_lines = "\n".join(f"- `{path}`" for path in still_default)
         default_content_warning = (
@@ -149,7 +176,7 @@ def build_bundle() -> str:
             default_content_warning=default_content_warning,
         )
     ]
-    for path in BUNDLE_FILES:
+    for path in paths:
         sections.append(f"---\n## FILE: {path}\n---\n\n{contents[path].rstrip()}\n")
 
     return "\n".join(sections)
@@ -162,7 +189,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         bundle = build_bundle()
-    except FileNotFoundError as exc:
+    except (FileNotFoundError, ValueError) as exc:
         print(f"error: {exc}")
         return 1
 
