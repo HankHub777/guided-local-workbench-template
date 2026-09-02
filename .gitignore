@@ -5,6 +5,10 @@ dist/
 !*.example.*
 data/input/
 data/generated/
+
+# Screenshots staged loosely in data/ for guide authoring (e.g. docs/visual-guide.html,
+# already embedded there as base64); not application data, not meant to be tracked here.
+data/*.png
 coverage/
 *.log
 .DS_Store
