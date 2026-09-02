@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workbench Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #F2F5F2;
+    --surface: #FFFFFF;
+    --surface-2: #E7ECE7;
+    --ink: #1C241F;
+    --ink-soft: #55635B;
+    --ink-faint: #8C988F;
+    --line: #D6DCD5;
+    --line-strong: #BFC8BE;
+    --accent: #2C6B4C;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #E2EFE6;
+    --accent-warm: #A6531E;
+    --accent-warm-soft: #F4E4D6;
+    --shadow: 0 24px 48px -28px rgba(20,26,22,0.38), 0 2px 8px rgba(20,26,22,0.08);
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --font-display: 'Noto Serif TC', 'Songti TC', 'Noto Serif', serif;
+    --font-body: 'Noto Sans TC', 'PingFang TC', 'Hiragino Sans', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #131917;
+      --surface: #1A211C;
+      --surface-2: #202822;
+      --ink: #E7ECE7;
+      --ink-soft: #A7B3AA;
+      --ink-faint: #6C7A71;
+      --line: #2A332C;
+      --line-strong: #3A453C;
+      --accent: #6FBF95;
+      --accent-ink: #0E1A13;
+      --accent-soft: #1E2E24;
+      --accent-warm: #E0925A;
+      --accent-warm-soft: #3A2A1E;
+      --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #131917;
+    --surface: #1A211C;
+    --surface-2: #202822;
+    --ink: #E7ECE7;
+    --ink-soft: #A7B3AA;
+    --ink-faint: #6C7A71;
+    --line: #2A332C;
+    --line-strong: #3A453C;
+    --accent: #6FBF95;
+    --accent-ink: #0E1A13;
+    --accent-soft: #1E2E24;
+    --accent-warm: #E0925A;
+    --accent-warm-soft: #3A2A1E;
+    --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; color: var(--ink); }
+
+  .app {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 24px 96px;
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    position: sticky;
+    top: 28px;
+    width: 250px;
+    flex: 0 0 250px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-height: calc(100vh - 56px);
+  }
+
+  .brand { padding: 2px 6px 14px; border-bottom: 1px solid var(--line); }
+  .brand-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    font-family: var(--font-display); font-weight: 700; font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; }
+  .brand-tag {
+    display: block; margin-top: 4px; font-family: var(--font-mono);
+    font-size: 11px; color: var(--ink-faint); letter-spacing: 0.01em;
+    word-break: break-word;
+  }
+
+  .nav-group { display: flex; flex-direction: column; gap: 3px; }
+  .nav-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-faint); padding: 0 10px; margin-bottom: 4px;
+  }
+  .nav-item {
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; text-align: left; border: none; background: transparent;
+    color: var(--ink-soft); font-family: var(--font-body); font-size: 14.5px; font-weight: 500;
+    padding: 9px 10px; border-radius: var(--radius-sm); cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .nav-item:hover { background: var(--surface-2); color: var(--ink); }
+  .nav-item.active { background: var(--accent-soft); color: var(--accent); }
+  .nav-icon { width: 18px; text-align: center; font-size: 14px; flex: 0 0 auto; }
+  .nav-status {
+    margin-left: auto; font-size: 10px; font-family: var(--font-mono);
+    color: var(--ink-faint); border: 1px solid var(--line-strong); border-radius: 999px;
+    padding: 1px 7px; letter-spacing: 0.02em; white-space: nowrap;
+  }
+
+  .sidebar-footer { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); }
+  .lang-toggle {
+    display: flex; width: 100%; border: 1px solid var(--line-strong);
+    border-radius: 999px; overflow: hidden; background: var(--surface-2);
+  }
+  .lang-toggle button {
+    flex: 1; border: none; background: transparent; color: var(--ink-soft);
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    padding: 7px 0; cursor: pointer; transition: background-color .15s ease, color .15s ease;
+  }
+  .lang-toggle button.is-active { background: var(--accent); color: var(--accent-ink); }
+
+  /* ---------- Main content ---------- */
+  .content { flex: 1 1 auto; min-width: 0; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .wireframe-note {
+    display: flex; gap: 10px; align-items: flex-start;
+    border: 1px dashed var(--line-strong); border-radius: var(--radius-md);
+    background: var(--surface); padding: 12px 14px; margin-bottom: 28px;
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .wireframe-note strong { color: var(--ink); }
+
+  .page-head { max-width: 680px; margin-bottom: 36px; }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.09em; color: var(--accent); margin: 0 0 10px;
+  }
+  .page-head h1 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 700; }
+  .lede { margin: 14px 0 0; color: var(--ink-soft); font-size: 16.5px; max-width: 62ch; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 700px; }
+
+  .step {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius-lg); box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .step > summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px;
+  }
+  .step > summary::-webkit-details-marker { display: none; }
+  .step-num {
+    font-family: var(--font-mono); font-variant-numeric: tabular-nums;
+    font-size: 13px; color: var(--accent); background: var(--accent-soft);
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  }
+  .step-heading { flex: 1 1 auto; min-width: 0; }
+  .step-title { display: block; font-weight: 600; font-size: 16px; }
+  .step-teaser { display: block; font-size: 13px; color: var(--ink-faint); margin-top: 2px; }
+  .chevron { flex: 0 0 auto; color: var(--ink-faint); transition: transform .2s ease; font-size: 13px; }
+  .step[open] .chevron { transform: rotate(180deg); }
+  @media (prefers-reduced-motion: reduce) { .chevron { transition: none; } }
+
+  .step-body { padding: 0 20px 24px 68px; display: flex; flex-direction: column; gap: 16px; }
+  .step-body p { margin: 0; color: var(--ink); max-width: 58ch; }
+
+  .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .checklist li {
+    display: flex; align-items: baseline; gap: 10px; padding: 10px 12px;
+    background: var(--surface-2); border-radius: var(--radius-sm); font-size: 14.5px;
+  }
+  .checklist .tick { color: var(--accent); font-family: var(--font-mono); flex: 0 0 auto; }
+  .checklist code { font-family: var(--font-mono); background: none; padding: 0; }
+
+  .shot-placeholder {
+    border: 1px dashed var(--line-strong); border-radius: var(--radius-md);
+    background: var(--surface-2); color: var(--ink-faint);
+    font-family: var(--font-mono); font-size: 12.5px;
+    padding: 34px 16px; text-align: center;
+  }
+
+  pre.term {
+    margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.65;
+    background: var(--ink); color: #DCE7DF; border-radius: var(--radius-md);
+    padding: 14px 16px; overflow-x: auto; white-space: pre;
+  }
+  pre.term .dim { color: #7D8F84; }
+
+  .decision-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .decision-list li {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 12px; background: var(--surface-2); border-radius: var(--radius-sm);
+  }
+  .decision-q { flex: 1 1 auto; font-size: 14.5px; }
+  .yn { display: flex; gap: 6px; flex: 0 0 auto; }
+  .yn button {
+    font-family: var(--font-mono); font-size: 11.5px; border: 1px solid var(--line-strong);
+    background: var(--surface); color: var(--ink-soft); border-radius: 6px; padding: 4px 9px; cursor: pointer;
+  }
+  .yn button.picked { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+  .mode-result {
+    display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+    border-radius: var(--radius-md); background: var(--accent-warm-soft);
+    border: 1px solid var(--line);
+  }
+  .mode-result .tag {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+    background: var(--accent-warm); color: #fff; border-radius: 999px; padding: 3px 11px;
+  }
+  .mode-result span.note { font-size: 13px; color: var(--ink-soft); }
+
+  .prompt-box { border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; }
+  .prompt-box-head {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface-2); padding: 8px 14px;
+    font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--ink-faint);
+  }
+  .prompt-box pre {
+    margin: 0; padding: 16px; font-family: var(--font-mono); font-size: 13px;
+    line-height: 1.7; background: var(--surface); color: var(--ink); white-space: pre-wrap;
+  }
+
+  .chat { display: flex; flex-direction: column; gap: 10px; }
+  .bubble { max-width: 82%; display: flex; flex-direction: column; gap: 4px; }
+  .bubble .who {
+    font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--ink-faint);
+  }
+  .bubble p {
+    margin: 0; padding: 10px 13px; border-radius: 14px; font-size: 14px; line-height: 1.6;
+  }
+  .bubble--bot { align-self: flex-start; }
+  .bubble--bot p { background: var(--surface-2); border-bottom-left-radius: 4px; color: var(--ink); }
+  .bubble--human { align-self: flex-end; align-items: flex-end; }
+  .bubble--human p { background: var(--accent); color: var(--accent-ink); border-bottom-right-radius: 4px; }
+
+  .dual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .dual-card {
+    border-radius: var(--radius-md); padding: 14px; border: 1px solid var(--line);
+  }
+  .dual-card.bad { background: var(--accent-warm-soft); }
+  .dual-card.good { background: var(--accent-soft); }
+  .dual-card .dual-label {
+    font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; margin-bottom: 10px;
+    display: inline-block;
+  }
+  .dual-card.bad .dual-label { color: var(--accent-warm); }
+  .dual-card.good .dual-label { color: var(--accent); }
+
+  .placeholder-panel {
+    max-width: 640px; border: 1px dashed var(--line-strong); border-radius: var(--radius-lg);
+    padding: 40px 32px; background: var(--surface);
+  }
+  .placeholder-panel .badge {
+    display: inline-block; font-family: var(--font-mono); font-size: 11px;
+    background: var(--surface-2); color: var(--ink-faint); border-radius: 999px;
+    padding: 3px 10px; margin-bottom: 14px;
+  }
+  .placeholder-panel h2 { font-size: 22px; margin-bottom: 10px; }
+  .placeholder-panel p { color: var(--ink-soft); max-width: 52ch; }
+  .placeholder-panel code {
+    font-family: var(--font-mono); font-size: 12.5px; background: var(--surface-2);
+    padding: 2px 6px; border-radius: 4px;
+  }
+
+  @media (max-width: 720px) {
+    .app { flex-direction: column; padding: 16px 16px 64px; }
+    .sidebar {
+      position: static; width: 100%; flex: 1 1 auto; max-height: none;
+      flex-direction: row; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .brand { border-bottom: none; padding: 0; flex: 0 0 auto; }
+    .nav-group { flex-direction: row; overflow-x: auto; gap: 6px; flex: 1 1 auto; min-width: 0; }
+    .nav-label { display: none; }
+    .nav-item { flex: 0 0 auto; white-space: nowrap; }
+    .nav-status { display: none; }
+    .sidebar-footer { margin-top: 0; padding-top: 0; border-top: none; flex: 0 0 auto; width: 140px; }
+    .step-body { padding: 0 16px 20px 16px; }
+    .dual { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app" data-lang="zh">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">工</span>
+      <span class="brand-name" data-i18n="brand.name">工作台實戰手冊</span>
+      <span class="brand-tag">guided-local-workbench-template</span>
+    </div>
+    <div class="nav-group">
+      <span class="nav-label" data-i18n="nav.label">專案導覽</span>
+      <button class="nav-item active" data-target="panel-guide">
+        <span class="nav-icon">◆</span><span data-i18n="nav.guide">視覺化指南</span>
+      </button>
+      <button class="nav-item" data-target="panel-architecture">
+        <span class="nav-icon">▢</span><span data-i18n="nav.architecture">架構規則</span>
+        <span class="nav-status" data-i18n="nav.status">施工中</span>
+      </button>
+      <button class="nav-item" data-target="panel-data">
+        <span class="nav-icon">▢</span><span data-i18n="nav.data">資料契約</span>
+        <span class="nav-status" data-i18n="nav.status">施工中</span>
+      </button>
+      <button class="nav-item" data-target="panel-upgrade">
+        <span class="nav-icon">▢</span><span data-i18n="nav.upgrade">升級路徑</span>
+        <span class="nav-status" data-i18n="nav.status">施工中</span>
+      </button>
+      <button class="nav-item" data-target="panel-boundary">
+        <span class="nav-icon">▢</span><span data-i18n="nav.boundary">契約邊界</span>
+        <span class="nav-status" data-i18n="nav.status">施工中</span>
+      </button>
+    </div>
+    <div class="sidebar-footer">
+      <div class="lang-toggle">
+        <button data-lang-btn="zh" class="is-active">中文</button>
+        <button data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- ===== Visual Guide ===== -->
+    <section id="panel-guide" class="panel active">
+      <div class="wireframe-note">
+        <span>🚧</span>
+        <span data-i18n="wireframe.note"><strong>骨架版本。</strong>目前所有截圖、逐字稿皆為示意佔位，用來確認版面結構與互動方式；真實素材會在下一輪逐步替換進來。</span>
+      </div>
+
+      <header class="page-head">
+        <p class="eyebrow" data-i18n="vg.eyebrow">VISUAL GUIDE</p>
+        <h1 data-i18n="vg.title">從零開始，跟著 LLM 蓋一個屬於自己的工作台</h1>
+        <p class="lede" data-i18n="vg.lede">七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。</p>
+      </header>
+
+      <ol class="steps">
+
+        <!-- Step 1 -->
+        <li>
+          <details class="step" open>
+            <summary>
+              <span class="step-num">01</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s1.title">開工前準備：三個工具要先到位</span>
+                <span class="step-teaser" data-i18n="s1.teaser">這一步沒辦法靠腳本自動驗證，只能手動確認</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s1.body">後面所有步驟都建立在這三個工具已經裝好的前提上，而這個前提沒辦法用腳本自動檢查——因為要跑檢查腳本，Python 本身就得先存在。如果你的電腦需要 IT 才能裝軟體，先把這三項送出需求；自己的電腦通常直接安裝即可。裝好之後才進入下一步。</p>
+              <ul class="checklist">
+                <li><span class="tick">✓</span><span data-i18n="s1.item1">Python <code>3.13.2</code></span></li>
+                <li><span class="tick">✓</span><span data-i18n="s1.item2">Node.js（LTS 版本）</span></li>
+                <li><span class="tick">✓</span><span data-i18n="s1.item3">Git</span></li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 2 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">02</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s2.title">拿到專案：Download ZIP，不走終端機 clone</span>
+                <span class="step-teaser" data-i18n="s2.teaser">避開公司內網 407 認證問題的最簡路徑</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s2.body">到模板的 GitHub 頁面，點綠色 <strong data-i18n="s2.code">Code</strong> 按鈕，選 <strong data-i18n="s2.zip">Download ZIP</strong>。解壓縮之後，打開終端機切換到那個資料夾。想從這一刻開始留下自己的版本紀錄，可以額外跑一次 <code>git init</code>——這一步是選擇性的。</p>
+              <div class="shot-placeholder" data-i18n="ph.screenshot">〔截圖佔位：Download ZIP 按鈕位置〕</div>
+              <pre class="term">cd <span class="dim">~/Documents/你的專案名稱</span>
+git init</pre>
+              <p data-i18n="s2.checkBody">資料夾裡帶著一支唯讀的環境檢查腳本，不會安裝或更動任何設定，只回報 Python、Node、Git 有沒有偵測到，以及有沒有代理（proxy）相關的環境變數存在。往下走之前先跑一次，能提早抓到後面容易卡住的環境問題。</p>
+              <pre class="term">python scripts/check_environment.py</pre>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 3 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">03</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s3.title">選運作模式：用五個商業判斷取代工程術語</span>
+                <span class="step-teaser" data-i18n="s3.teaser">不用先搞懂 Local / Managed / Product 是什麼意思</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s3.body">點下面每一題最接近你情況的答案，右下角會給你一個對照建議——實際模式仍以 README 的表格為準。</p>
+              <ul class="decision-list">
+                <li><span class="decision-q" data-i18n="s3.q1">需要讓其他人也連線進來看嗎？</span><span class="yn"><button data-q="1" data-v="y">是</button><button data-q="1" data-v="n">否</button></span></li>
+                <li><span class="decision-q" data-i18n="s3.q2">這平台會不會直接取代掉轉交給下一位同事的人工流程？</span><span class="yn"><button data-q="2" data-v="y">是</button><button data-q="2" data-v="n">否</button></span></li>
+                <li><span class="decision-q" data-i18n="s3.q3">這個平台重不重要？</span><span class="yn"><button data-q="3" data-v="y">是</button><button data-q="3" data-v="n">否</button></span></li>
+                <li><span class="decision-q" data-i18n="s3.q4">有沒有多個單位、主管會使用？</span><span class="yn"><button data-q="4" data-v="y">是</button><button data-q="4" data-v="n">否</button></span></li>
+                <li><span class="decision-q" data-i18n="s3.q5">之後需不需要工程團隊接手維護？</span><span class="yn"><button data-q="5" data-v="y">是</button><button data-q="5" data-v="n">否</button></span></li>
+              </ul>
+              <div class="mode-result">
+                <span class="tag" data-i18n="s3.tag">範例：Managed</span>
+                <span class="note" data-i18n="s3.resultNote">示意用結果，實際對照表尚待確認</span>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 4 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">04</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s4.title">啟動 LLM 對話：公版 prompt + context bundle</span>
+                <span class="step-teaser" data-i18n="s4.teaser">讓 chatbot 真的照模板規則做事，而不是憑印象猜</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s4.body">先在終端機跑一次打包腳本，產生單一檔案上傳給 chatbot；接著用下面這段公版 prompt 起頭，把最後一句換成你自己的狀況。</p>
+              <pre class="term">python scripts/build_context_bundle.py</pre>
+              <div class="prompt-box">
+                <div class="prompt-box-head"><span data-i18n="prompt.label">公版 PROMPT · 依你的狀況客製化</span></div>
+                <pre data-i18n="s4.prompt">我現在要做一個 clone guided-local-workbench-template 的新專案，我已經在本地建立了資料夾，現在請按照我給你的 LLM_CONTEXT_BUNDLE.md 規則初始化，後續的流程按照模板進行，除非我有特殊要求。如果有遺漏的細節可以參考 https://github.com/HankHub777/guided-local-workbench-template.git</pre>
+              </div>
+              <div class="chat">
+                <div class="bubble bubble--human">
+                  <span class="who" data-i18n="chat.human">YOU</span>
+                  <p data-i18n="s4.human1">〔上傳 LLM_CONTEXT_BUNDLE.md〕+ 上面那段 prompt</p>
+                </div>
+                <div class="bubble bubble--bot">
+                  <span class="who" data-i18n="chat.bot">CHATBOT</span>
+                  <p data-i18n="s4.bot1">已讀取規則：資料只能經由 web/src/data/ 的 adapter 讀取、data/generated/ 不能手改、改動資料結構要同步更新 schema 與 DATA_CONTRACT.md。目前 ai/PROJECT_CONTEXT.md 還是模板預設內容，建議先告訴我這個工具實際要處理什麼資料，我再開始規劃第一個改動。</p>
+                </div>
+              </div>
+              <p style="font-size:12.5px;color:var(--ink-faint)" data-i18n="s4.caption">↑ 示範用對話，實際逐字稿待補</p>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 5 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">05</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s5.title">提出一個可驗收的需求</span>
+                <span class="step-teaser" data-i18n="s5.teaser">不要一次要求「做一個完整系統」</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s5.body">每次只講一件事，並要求 chatbot 先說清楚會改哪些檔案、哪些驗收條件會過，再讓它動手。</p>
+              <div class="prompt-box">
+                <div class="prompt-box-head"><span data-i18n="prompt.label">節點提示 · 貼在你的需求前面</span></div>
+                <pre data-i18n="s5.prompt">在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。</pre>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 6 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">06</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s6.title">套用 chatbot 的更新，別忘記貼回聊天室</span>
+                <span class="step-teaser" data-i18n="s6.teaser">整個流程裡後果最容易被忽略的一步</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s6.body">把 chatbot 輸出的 zip 放進 <code>updates/incoming/</code>，執行 <code>apply_update.py</code>。腳本跑完會印出一段文字，要整段複製貼回聊天室——不然 chatbot 會誤以為變更已經全部套用。</p>
+              <div class="chat">
+                <div class="bubble bubble--bot">
+                  <span class="who" data-i18n="chat.bot">TERMINAL</span>
+                  <p data-i18n="s6.term1">Paste this back into the chatbot so it knows what actually happened: 已套用 3 個檔案，跳過 1 個模板契約檔案（README.md）待你確認。</p>
+                </div>
+                <div class="bubble bubble--human">
+                  <span class="who" data-i18n="chat.human">YOU</span>
+                  <p data-i18n="s6.human1">〔把上面那段整段貼回聊天室〕</p>
+                </div>
+              </div>
+              <p style="font-size:12.5px;color:var(--ink-faint)" data-i18n="s4.caption">↑ 示範用對話，實際逐字稿待補</p>
+            </div>
+          </details>
+        </li>
+
+        <!-- Step 7 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">07</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="s7.title">守住模板契約邊界</span>
+                <span class="step-teaser" data-i18n="s7.teaser">chatbot 有時候會「順手」幫你改到不該改的檔案</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="s7.body">同一份模板會被很多人 clone、交接，模板契約檔案（如 README、ARCHITECTURE_RULES）一旦被順手改掉，之後每份 clone 就會慢慢長成不一樣的東西。</p>
+              <div class="dual">
+                <div class="dual-card bad">
+                  <span class="dual-label" data-i18n="s7.badLabel">✕ 錯誤示範</span>
+                  <div class="chat">
+                    <div class="bubble bubble--human"><p data-i18n="s7.bad1">順便把 README 也改成我們專案的名字吧</p></div>
+                    <div class="bubble bubble--bot"><p data-i18n="s7.bad2">好的，已經幫你改好 README.md</p></div>
+                  </div>
+                </div>
+                <div class="dual-card good">
+                  <span class="dual-label" data-i18n="s7.goodLabel">✓ 正確示範</span>
+                  <div class="chat">
+                    <div class="bubble bubble--human"><p data-i18n="s7.good1">順便把 README 也改成我們專案的名字吧</p></div>
+                    <div class="bubble bubble--bot"><p data-i18n="s7.good2">README.md 屬於模板契約檔案，一般專案改動不建議動它。要改的話，我先列出跟 TEMPLATE_BOUNDARY.md 的落差，你確認後再動手，可以嗎？</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- ===== Placeholder panels ===== -->
+    <section id="panel-architecture" class="panel">
+      <div class="placeholder-panel">
+        <span class="badge" data-i18n="nav.status">施工中</span>
+        <h2 data-i18n="ph.architecture.title">架構規則</h2>
+        <p data-i18n="ph.architecture.body">對應 <code>ai/ARCHITECTURE_RULES.md</code>，之後會做成同樣的段落式視覺內容。</p>
+      </div>
+    </section>
+    <section id="panel-data" class="panel">
+      <div class="placeholder-panel">
+        <span class="badge" data-i18n="nav.status">施工中</span>
+        <h2 data-i18n="ph.data.title">資料契約</h2>
+        <p data-i18n="ph.data.body">對應 <code>docs/DATA_CONTRACT.md</code>，之後會做成同樣的段落式視覺內容。</p>
+      </div>
+    </section>
+    <section id="panel-upgrade" class="panel">
+      <div class="placeholder-panel">
+        <span class="badge" data-i18n="nav.status">施工中</span>
+        <h2 data-i18n="ph.upgrade.title">升級路徑</h2>
+        <p data-i18n="ph.upgrade.body">對應 <code>docs/UPGRADE_PATH.md</code>，之後會做成同樣的段落式視覺內容。</p>
+      </div>
+    </section>
+    <section id="panel-boundary" class="panel">
+      <div class="placeholder-panel">
+        <span class="badge" data-i18n="nav.status">施工中</span>
+        <h2 data-i18n="ph.boundary.title">契約邊界</h2>
+        <p data-i18n="ph.boundary.body">對應 <code>docs/TEMPLATE_BOUNDARY.md</code>，之後會做成同樣的段落式視覺內容。</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function () {
+  var DICT = {
+    zh: {
+      "brand.name": "工作台實戰手冊",
+      "nav.label": "專案導覽",
+      "nav.guide": "視覺化指南",
+      "nav.architecture": "架構規則",
+      "nav.data": "資料契約",
+      "nav.upgrade": "升級路徑",
+      "nav.boundary": "契約邊界",
+      "nav.status": "施工中",
+      "wireframe.note": "<strong>骨架版本。</strong>目前所有截圖、逐字稿皆為示意佔位，用來確認版面結構與互動方式；真實素材會在下一輪逐步替換進來。",
+      "vg.eyebrow": "VISUAL GUIDE",
+      "vg.title": "從零開始，跟著 LLM 蓋一個屬於自己的工作台",
+      "vg.lede": "七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。",
+      "s1.title": "開工前準備：三個工具要先到位",
+      "s1.teaser": "這一步沒辦法靠腳本自動驗證，只能手動確認",
+      "s1.body": "後面所有步驟都建立在這三個工具已經裝好的前提上，而這個前提沒辦法用腳本自動檢查——因為要跑檢查腳本，Python 本身就得先存在。如果你的電腦需要 IT 才能裝軟體，先把這三項送出需求；自己的電腦通常直接安裝即可。裝好之後才進入下一步。",
+      "s1.item1": "Python 3.13.2",
+      "s1.item2": "Node.js（LTS 版本）",
+      "s1.item3": "Git",
+      "s2.title": "拿到專案：Download ZIP，不走終端機 clone",
+      "s2.teaser": "避開公司內網 407 認證問題的最簡路徑",
+      "s2.body": "到模板的 GitHub 頁面，點綠色 Code 按鈕，選 Download ZIP。解壓縮之後，打開終端機切換到那個資料夾。想從這一刻開始留下自己的版本紀錄，可以額外跑一次 git init——這一步是選擇性的。",
+      "s2.checkBody": "資料夾裡帶著一支唯讀的環境檢查腳本，不會安裝或更動任何設定，只回報 Python、Node、Git 有沒有偵測到，以及有沒有代理（proxy）相關的環境變數存在。往下走之前先跑一次，能提早抓到後面容易卡住的環境問題。",
+      "s2.code": "Code",
+      "s2.zip": "Download ZIP",
+      "ph.screenshot": "〔截圖佔位：Download ZIP 按鈕位置〕",
+      "s3.title": "選運作模式：用五個商業判斷取代工程術語",
+      "s3.teaser": "不用先搞懂 Local / Managed / Product 是什麼意思",
+      "s3.body": "點下面每一題最接近你情況的答案，右下角會給你一個對照建議——實際模式仍以 README 的表格為準。",
+      "s3.q1": "需要讓其他人也連線進來看嗎？",
+      "s3.q2": "這平台會不會直接取代掉轉交給下一位同事的人工流程？",
+      "s3.q3": "這個平台重不重要？",
+      "s3.q4": "有沒有多個單位、主管會使用？",
+      "s3.q5": "之後需不需要工程團隊接手維護？",
+      "s3.tag": "範例：Managed",
+      "s3.resultNote": "示意用結果，實際對照表尚待確認",
+      "s4.title": "啟動 LLM 對話：公版 prompt + context bundle",
+      "s4.teaser": "讓 chatbot 真的照模板規則做事，而不是憑印象猜",
+      "s4.body": "先在終端機跑一次打包腳本，產生單一檔案上傳給 chatbot；接著用下面這段公版 prompt 起頭，把最後一句換成你自己的狀況。",
+      "prompt.label": "公版 PROMPT · 依你的狀況客製化",
+      "s4.prompt": "我現在要做一個 clone guided-local-workbench-template 的新專案，我已經在本地建立了資料夾，現在請按照我給你的 LLM_CONTEXT_BUNDLE.md 規則初始化，後續的流程按照模板進行，除非我有特殊要求。如果有遺漏的細節可以參考 https://github.com/HankHub777/guided-local-workbench-template.git",
+      "chat.human": "YOU",
+      "chat.bot": "CHATBOT",
+      "s4.human1": "〔上傳 LLM_CONTEXT_BUNDLE.md〕+ 上面那段 prompt",
+      "s4.bot1": "已讀取規則：資料只能經由 web/src/data/ 的 adapter 讀取、data/generated/ 不能手改、改動資料結構要同步更新 schema 與 DATA_CONTRACT.md。目前 ai/PROJECT_CONTEXT.md 還是模板預設內容，建議先告訴我這個工具實際要處理什麼資料，我再開始規劃第一個改動。",
+      "s4.caption": "↑ 示範用對話，實際逐字稿待補",
+      "s5.title": "提出一個可驗收的需求",
+      "s5.teaser": "不要一次要求「做一個完整系統」",
+      "s5.body": "每次只講一件事，並要求 chatbot 先說清楚會改哪些檔案、哪些驗收條件會過，再讓它動手。",
+      "s5.prompt": "在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。",
+      "s6.title": "套用 chatbot 的更新，別忘記貼回聊天室",
+      "s6.teaser": "整個流程裡後果最容易被忽略的一步",
+      "s6.body": "把 chatbot 輸出的 zip 放進 updates/incoming/，執行 apply_update.py。腳本跑完會印出一段文字，要整段複製貼回聊天室——不然 chatbot 會誤以為變更已經全部套用。",
+      "s6.term1": "Paste this back into the chatbot so it knows what actually happened: 已套用 3 個檔案，跳過 1 個模板契約檔案（README.md）待你確認。",
+      "s6.human1": "〔把上面那段整段貼回聊天室〕",
+      "s7.title": "守住模板契約邊界",
+      "s7.teaser": "chatbot 有時候會「順手」幫你改到不該改的檔案",
+      "s7.body": "同一份模板會被很多人 clone、交接，模板契約檔案（如 README、ARCHITECTURE_RULES）一旦被順手改掉，之後每份 clone 就會慢慢長成不一樣的東西。",
+      "s7.badLabel": "✕ 錯誤示範",
+      "s7.bad1": "順便把 README 也改成我們專案的名字吧",
+      "s7.bad2": "好的，已經幫你改好 README.md",
+      "s7.goodLabel": "✓ 正確示範",
+      "s7.good1": "順便把 README 也改成我們專案的名字吧",
+      "s7.good2": "README.md 屬於模板契約檔案，一般專案改動不建議動它。要改的話，我先列出跟 TEMPLATE_BOUNDARY.md 的落差，你確認後再動手，可以嗎？",
+      "ph.architecture.title": "架構規則",
+      "ph.architecture.body": "對應 ai/ARCHITECTURE_RULES.md，之後會做成同樣的段落式視覺內容。",
+      "ph.data.title": "資料契約",
+      "ph.data.body": "對應 docs/DATA_CONTRACT.md，之後會做成同樣的段落式視覺內容。",
+      "ph.upgrade.title": "升級路徑",
+      "ph.upgrade.body": "對應 docs/UPGRADE_PATH.md，之後會做成同樣的段落式視覺內容。",
+      "ph.boundary.title": "契約邊界",
+      "ph.boundary.body": "對應 docs/TEMPLATE_BOUNDARY.md，之後會做成同樣的段落式視覺內容。"
+    },
+    en: {
+      "brand.name": "Workbench Field Guide",
+      "nav.label": "Project Map",
+      "nav.guide": "Visual Guide",
+      "nav.architecture": "Architecture Rules",
+      "nav.data": "Data Contract",
+      "nav.upgrade": "Upgrade Path",
+      "nav.boundary": "Template Boundary",
+      "nav.status": "coming soon",
+      "wireframe.note": "<strong>Wireframe stage.</strong> Every screenshot and transcript here is a placeholder for reviewing layout and interaction — real material will replace it in the next pass.",
+      "vg.eyebrow": "VISUAL GUIDE",
+      "vg.title": "Build your own workbench, guided by an LLM, from a blank folder",
+      "vg.lede": "Seven sections, one for each stage you'll actually walk through. Each one expands and collapses — the hands-on parts carry real screenshots and real dialogue, so you follow along instead of guessing.",
+      "s1.title": "Before you start: three tools need to already be in place",
+      "s1.teaser": "This one can't be checked by a script, so confirm it by hand",
+      "s1.body": "Everything after this assumes Python 3.13.2, Node.js, and Git are already on your machine — and that assumption can't be checked automatically, because running a checker at all needs Python to exist first. Get them installed however software normally gets installed for you, then move on to the next step.",
+      "s1.item1": "Python 3.13.2",
+      "s1.item2": "Node.js (LTS)",
+      "s1.item3": "Git",
+      "s2.title": "Get the project: Download ZIP, skip terminal clone",
+      "s2.teaser": "The simplest path if a networked git clone gives you trouble",
+      "s2.body": "Go to the template's GitHub page, click the green Code button, choose Download ZIP. Unzip it, then open a terminal and cd into that folder. If you want your own version history from this point on, run git init — that step is optional.",
+      "s2.checkBody": "The folder ships with a read-only environment checker — it doesn't install or change anything, it just reports whether Python, Node, and Git are detected, and whether any proxy-related environment variables are present. Run it before moving on; it's the fastest way to catch a networking quirk before it surprises you later.",
+      "s2.code": "Code",
+      "s2.zip": "Download ZIP",
+      "ph.screenshot": "[Screenshot placeholder: Download ZIP button]",
+      "s3.title": "Choose a mode: five plain-language questions instead of jargon",
+      "s3.teaser": "You don't need to understand Local / Managed / Product first",
+      "s3.body": "Click whichever answer fits your situation for each question below — the corner shows a matching suggestion. The README's table still has the final word.",
+      "s3.q1": "Do other people need to connect in and view this?",
+      "s3.q2": "Would this platform directly replace a manual handoff to the next colleague?",
+      "s3.q3": "Is this platform important?",
+      "s3.q4": "Will multiple units or managers use it?",
+      "s3.q5": "Will an engineering team need to take over maintenance later?",
+      "s3.tag": "Example: Managed",
+      "s3.resultNote": "Illustrative result — the real mapping is still to be confirmed",
+      "s4.title": "Kick off the LLM: a starter prompt + the context bundle",
+      "s4.teaser": "So the chatbot actually follows the template's rules, not just its impression of them",
+      "s4.body": "Run the bundling script once in a terminal to produce a single file for the chatbot, then open with the starter prompt below — swap the last sentence for your own situation.",
+      "prompt.label": "STARTER PROMPT · customize the last line",
+      "s4.prompt": "I'm starting a new project cloned from guided-local-workbench-template. I've already created the folder locally — please initialize following the rules in the LLM_CONTEXT_BUNDLE.md I'm giving you, and follow the template's process from here unless I say otherwise. If anything's missing, the reference is https://github.com/HankHub777/guided-local-workbench-template.git",
+      "chat.human": "YOU",
+      "chat.bot": "CHATBOT",
+      "s4.human1": "[uploads LLM_CONTEXT_BUNDLE.md] + the prompt above",
+      "s4.bot1": "Rules loaded: data only flows through the adapter in web/src/data/, data/generated/ is never hand-edited, and any schema change needs DATA_CONTRACT.md updated alongside it. ai/PROJECT_CONTEXT.md is still template placeholder content — tell me what this tool actually needs to handle and I'll plan the first change.",
+      "s4.caption": "↑ Sample dialogue — real transcript still to come",
+      "s5.title": "Make one acceptance-testable request",
+      "s5.teaser": "Don't ask for \"a complete system\" in one go",
+      "s5.body": "Ask for exactly one thing at a time, and have the chatbot state which files it will touch and which acceptance criteria will pass before it acts.",
+      "s5.prompt": "Before you make any changes, tell me: 1) which files you'll touch, 2) which acceptance criteria will pass afterward. Wait for my confirmation before producing a patch.",
+      "s6.title": "Apply the update — don't skip pasting the result back",
+      "s6.teaser": "The single step in this whole flow that's easiest to forget",
+      "s6.body": "Drop the chatbot's zip into updates/incoming/ and run apply_update.py. When it finishes, it prints a block of text — copy that whole block back into the chat, or the chatbot will assume every change went through.",
+      "s6.term1": "Paste this back into the chatbot so it knows what actually happened: applied 3 files, skipped 1 template-contract file (README.md) pending your review.",
+      "s6.human1": "[pastes that whole block back into the chat]",
+      "s7.title": "Hold the template contract boundary",
+      "s7.teaser": "Sometimes the chatbot \"helpfully\" edits a file it shouldn't",
+      "s7.body": "The same template gets cloned by many people and handed off between colleagues. Once a template-contract file (README, ARCHITECTURE_RULES) gets casually rewritten, every clone starts drifting into something different.",
+      "s7.badLabel": "✕ What not to do",
+      "s7.bad1": "While you're at it, rename the README to our project name",
+      "s7.bad2": "Sure, I've updated README.md for you",
+      "s7.goodLabel": "✓ What to do instead",
+      "s7.good1": "While you're at it, rename the README to our project name",
+      "s7.good2": "README.md is a template-contract file — I'd hold off changing it on an ordinary project change. If you do want it changed, let me list what would diverge from TEMPLATE_BOUNDARY.md first, and you confirm before I touch it. Sound okay?",
+      "ph.architecture.title": "Architecture Rules",
+      "ph.architecture.body": "Maps to ai/ARCHITECTURE_RULES.md — will get the same paragraph-style visual treatment later.",
+      "ph.data.title": "Data Contract",
+      "ph.data.body": "Maps to docs/DATA_CONTRACT.md — will get the same paragraph-style visual treatment later.",
+      "ph.upgrade.title": "Upgrade Path",
+      "ph.upgrade.body": "Maps to docs/UPGRADE_PATH.md — will get the same paragraph-style visual treatment later.",
+      "ph.boundary.title": "Template Boundary",
+      "ph.boundary.body": "Maps to docs/TEMPLATE_BOUNDARY.md — will get the same paragraph-style visual treatment later."
+    }
+  };
+
+  var root = document.querySelector('.app');
+  var current = 'zh';
+  try {
+    var saved = localStorage.getItem('wfg-lang');
+    if (saved === 'zh' || saved === 'en') current = saved;
+  } catch (e) {}
+
+  function applyLang(lang) {
+    current = lang;
+    root.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    var dict = DICT[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n');
+      if (dict[key] != null) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-lang-btn') === lang);
+    });
+    try { localStorage.setItem('wfg-lang', lang); } catch (e) {}
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () { applyLang(btn.getAttribute('data-lang-btn')); });
+  });
+
+  document.querySelectorAll('.nav-item').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = btn.getAttribute('data-target');
+      document.querySelectorAll('.nav-item').forEach(function (b) { b.classList.toggle('active', b === btn); });
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.toggle('active', p.id === target); });
+    });
+  });
+
+  document.querySelectorAll('.yn button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var q = btn.getAttribute('data-q');
+      document.querySelectorAll('.yn button[data-q="' + q + '"]').forEach(function (b) { b.classList.remove('picked'); });
+      btn.classList.add('picked');
+    });
+  });
+
+  applyLang(current);
+})();
+</script>
+</body>
+</html>
