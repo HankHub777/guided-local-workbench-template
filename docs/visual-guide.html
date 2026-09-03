@@ -10,19 +10,19 @@
 
 <style>
   :root {
-    --paper: #F2F5F2;
+    --paper: #F4F6F9;
     --surface: #FFFFFF;
-    --surface-2: #E7ECE7;
-    --ink: #1C241F;
-    --ink-soft: #55635B;
-    --ink-faint: #8C988F;
-    --line: #D6DCD5;
-    --line-strong: #BFC8BE;
-    --accent: #2C6B4C;
+    --surface-2: #E8ECF3;
+    --ink: #16233A;
+    --ink-soft: #47566E;
+    --ink-faint: #8592A8;
+    --line: #DCE2EA;
+    --line-strong: #C3CCD9;
+    --accent: #2B4F8C;
     --accent-ink: #FFFFFF;
-    --accent-soft: #E2EFE6;
-    --accent-warm: #A6531E;
-    --accent-warm-soft: #F4E4D6;
+    --accent-soft: #E4EAF5;
+    --accent-warm: #A85A1E;
+    --accent-warm-soft: #F3E4D4;
     --shadow: 0 24px 48px -28px rgba(20,26,22,0.38), 0 2px 8px rgba(20,26,22,0.08);
     --radius-lg: 18px;
     --radius-md: 12px;
@@ -34,17 +34,17 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #131917;
-      --surface: #1A211C;
-      --surface-2: #202822;
-      --ink: #E7ECE7;
-      --ink-soft: #A7B3AA;
-      --ink-faint: #6C7A71;
-      --line: #2A332C;
-      --line-strong: #3A453C;
-      --accent: #6FBF95;
-      --accent-ink: #0E1A13;
-      --accent-soft: #1E2E24;
+      --paper: #10161F;
+      --surface: #171E2A;
+      --surface-2: #1E2733;
+      --ink: #E4E9F1;
+      --ink-soft: #A9B4C4;
+      --ink-faint: #6F7C90;
+      --line: #29323F;
+      --line-strong: #3A4553;
+      --accent: #7FA3DE;
+      --accent-ink: #0B1220;
+      --accent-soft: #1D2A3D;
       --accent-warm: #E0925A;
       --accent-warm-soft: #3A2A1E;
       --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
@@ -52,17 +52,17 @@
   }
 
   :root[data-theme="dark"] {
-    --paper: #131917;
-    --surface: #1A211C;
-    --surface-2: #202822;
-    --ink: #E7ECE7;
-    --ink-soft: #A7B3AA;
-    --ink-faint: #6C7A71;
-    --line: #2A332C;
-    --line-strong: #3A453C;
-    --accent: #6FBF95;
-    --accent-ink: #0E1A13;
-    --accent-soft: #1E2E24;
+    --paper: #10161F;
+    --surface: #171E2A;
+    --surface-2: #1E2733;
+    --ink: #E4E9F1;
+    --ink-soft: #A9B4C4;
+    --ink-faint: #6F7C90;
+    --line: #29323F;
+    --line-strong: #3A4553;
+    --accent: #7FA3DE;
+    --accent-ink: #0B1220;
+    --accent-soft: #1D2A3D;
     --accent-warm: #E0925A;
     --accent-warm-soft: #3A2A1E;
     --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
@@ -174,6 +174,23 @@
   .page-head h1 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 700; }
   .lede { margin: 14px 0 0; color: var(--ink-soft); font-size: 16.5px; max-width: 62ch; }
 
+  .why-bother {
+    background: var(--accent-soft); border-radius: var(--radius-lg);
+    padding: 28px 30px; margin-bottom: 36px; max-width: 680px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .why-bother .eyebrow { color: var(--accent); }
+  .why-bother h2 {
+    font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    margin: 0; text-wrap: balance; color: var(--ink);
+  }
+  .pain-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .pain-points li { font-size: 15px; line-height: 1.6; color: var(--ink); }
+  .why-bother .analogy {
+    font-family: var(--font-display); font-size: 15px; line-height: 1.75; color: var(--ink);
+    border-top: 1px solid var(--line-strong); padding-top: 16px; margin: 0;
+  }
+
   .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 700px; }
 
   .step {
@@ -229,10 +246,10 @@
 
   pre.term {
     margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.65;
-    background: #1C241F; color: #DCE7DF; border-radius: var(--radius-md);
+    background: #101B2C; color: #D7E1F0; border-radius: var(--radius-md);
     padding: 14px 16px; overflow-x: auto; white-space: pre;
   }
-  pre.term .dim { color: #7D8F84; }
+  pre.term .dim { color: #7C8CA3; }
 
   .why {
     margin: 0; padding-left: 12px; border-left: 2px solid var(--line-strong);
@@ -242,6 +259,20 @@
     font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
     letter-spacing: 0.06em; color: var(--ink-faint); margin-right: 6px;
   }
+
+  .case-card {
+    border: 1px dashed var(--line-strong); border-radius: var(--radius-md);
+    background: var(--surface-2); padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .case-card-label {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--ink-faint);
+    border: 1px solid var(--line-strong); border-radius: 999px; padding: 3px 10px 3px 8px;
+  }
+  .case-card-label::before { content: "◆"; font-size: 7px; position: relative; top: -1px; }
+  .case-card > p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
 
   .decision-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .decision-list li {
@@ -430,6 +461,17 @@
         <p class="lede" data-i18n="vg.lede">七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。</p>
       </header>
 
+      <section class="why-bother">
+        <p class="eyebrow" data-i18n="wb.eyebrow">為什麼要多走這一步</p>
+        <h2 data-i18n="wb.title">先別急著開始——這三個經驗你可能都有過</h2>
+        <ul class="pain-points">
+          <li data-i18n="wb.pain1">跟 chatbot 聊到第 50 輪，你請它加一個小功能，結果它把你前面調好的東西改壞了？</li>
+          <li data-i18n="wb.pain2">換了台電腦、或聊天工具的額度用完，你所有的「進度」瞬間歸零，只能重新解釋一次？</li>
+          <li data-i18n="wb.pain3">原始資料改了一個數字，整個工具就要重做一次，而不是自動更新？</li>
+        </ul>
+        <p class="analogy" data-i18n="wb.analogy">跟人口頭講好的事情，換一個人聽、隔一段時間，內容就會開始走樣；寫成白紙黑字的清單，不管誰接手、隔多久，內容都還在那裡。這個模板做的事，本質上就是把你原本只存在對話裡的默契，寫成白紙黑字——短期多一道手續，但這是唯一讓工具「活得比一次對話更久」的辦法。</p>
+      </section>
+
       <ol class="steps">
 
         <!-- Step 1 -->
@@ -570,10 +612,12 @@ git init</pre>
                 <div class="prompt-box-head"><span data-i18n="prompt.label">節點提示 · 貼在你的需求前面</span></div>
                 <pre data-i18n="s5.prompt">在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。</pre>
               </div>
-              <p data-i18n="s5.exampleIntro">實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：</p>
-              <div class="prompt-box">
-                <div class="prompt-box-head"><span data-i18n="s5.exampleLabel">真實範例 PROMPT · 換成你自己的情境</span></div>
-                <pre data-i18n="s5.examplePrompt">我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。
+              <div class="case-card">
+                <span class="case-card-label" data-i18n="s5.caseLabel">案例情境 · 單一來源 Demo</span>
+                <p data-i18n="s5.exampleIntro">實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：</p>
+                <div class="prompt-box">
+                  <div class="prompt-box-head"><span data-i18n="s5.exampleLabel">真實範例 PROMPT · 換成你自己的情境</span></div>
+                  <pre data-i18n="s5.examplePrompt">我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。
 
 附上這份報告畫面的截圖（已移除真實敏感資料，只保留欄位結構），讓你看到實際的呈現方式。
 
@@ -581,6 +625,7 @@ git init</pre>
 1. 列出你需要我確認、但目前還不清楚的問題（例如報告多久更新一次、誰是資料的唯一負責人、有沒有需要驗證的欄位規則）——不清楚的地方用問的，不要用假設或猜測帶過，除非是模板本身已經定義好的規則。
 2. 把整個需求拆成幾個小階段，每個階段都是「一次可驗收」的獨立變更，不要一次做完。
 3. 針對第一個階段，先告訴我你會改哪些檔案、完成後哪些驗收條件會通過，我確認後你才開始動手，先不要直接輸出 patch。</pre>
+                </div>
               </div>
             </div>
           </details>
@@ -888,6 +933,12 @@ git init</pre>
       "vg.eyebrow": "VISUAL GUIDE",
       "vg.title": "從零開始，跟著 LLM 蓋一個屬於自己的工作台",
       "vg.lede": "七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。",
+      "wb.eyebrow": "為什麼要多走這一步",
+      "wb.title": "先別急著開始——這三個經驗你可能都有過",
+      "wb.pain1": "跟 chatbot 聊到第 50 輪，你請它加一個小功能，結果它把你前面調好的東西改壞了？",
+      "wb.pain2": "換了台電腦、或聊天工具的額度用完，你所有的「進度」瞬間歸零，只能重新解釋一次？",
+      "wb.pain3": "原始資料改了一個數字，整個工具就要重做一次，而不是自動更新？",
+      "wb.analogy": "跟人口頭講好的事情，換一個人聽、隔一段時間，內容就會開始走樣；寫成白紙黑字的清單，不管誰接手、隔多久，內容都還在那裡。這個模板做的事，本質上就是把你原本只存在對話裡的默契，寫成白紙黑字——短期多一道手續，但這是唯一讓工具「活得比一次對話更久」的辦法。",
       "s1.title": "開工前準備：三個工具要先到位",
       "s1.teaser": "這一步沒辦法靠腳本自動驗證，只能手動確認",
       "s1.body": "確認這三個工具都已經裝在你的電腦上——自己的電腦通常直接安裝即可；公司電腦需要 IT 才能裝軟體的話，先把這三項需求送出去。",
@@ -934,6 +985,7 @@ git init</pre>
       "s5.teaser": "不要一次要求「做一個完整系統」",
       "s5.body": "每次只講一件事，並要求 chatbot 先說清楚會改哪些檔案、哪些驗收條件會過，再讓它動手。",
       "s5.prompt": "在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。",
+      "s5.caseLabel": "案例情境 · 單一來源 Demo",
       "s5.exampleIntro": "實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：",
       "s5.exampleLabel": "真實範例 PROMPT · 換成你自己的情境",
       "s5.examplePrompt": "我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。\n\n附上這份報告畫面的截圖（已移除真實敏感資料，只保留欄位結構），讓你看到實際的呈現方式。\n\n在你開始規劃任何程式改動之前，請先：\n1. 列出你需要我確認、但目前還不清楚的問題（例如報告多久更新一次、誰是資料的唯一負責人、有沒有需要驗證的欄位規則）——不清楚的地方用問的，不要用假設或猜測帶過，除非是模板本身已經定義好的規則。\n2. 把整個需求拆成幾個小階段，每個階段都是「一次可驗收」的獨立變更，不要一次做完。\n3. 針對第一個階段，先告訴我你會改哪些檔案、完成後哪些驗收條件會通過，我確認後你才開始動手，先不要直接輸出 patch。",
@@ -1098,6 +1150,12 @@ updates/applied/.../apply_log.json 的內容]
       "vg.eyebrow": "VISUAL GUIDE",
       "vg.title": "Build your own workbench, guided by an LLM, from a blank folder",
       "vg.lede": "Seven sections, one for each stage you'll actually walk through. Each one expands and collapses — the hands-on parts carry real screenshots and real dialogue, so you follow along instead of guessing.",
+      "wb.eyebrow": "WHY BOTHER WITH THIS EXTRA STEP",
+      "wb.title": "Before you start — three things you've probably already lived through",
+      "wb.pain1": "Fifty messages into a chat, you ask for one small addition, and the chatbot breaks something you'd already gotten working?",
+      "wb.pain2": "You switch computers, or your chat tool runs out of quota, and all your progress vanishes — you're stuck explaining everything from scratch again?",
+      "wb.pain3": "The source data changes by one number, and the whole tool needs rebuilding instead of just updating?",
+      "wb.analogy": "Something agreed verbally drifts the moment a different person hears it, or enough time passes. Something written down as a checklist stays exactly as it was, no matter who picks it up or how long it's been. That's what this template actually does: it turns the understanding that used to live only inside one conversation into something written down — a little more work up front, but the only way this tool outlives a single chat.",
       "s1.title": "Before you start: three tools need to already be in place",
       "s1.teaser": "This one can't be checked by a script, so confirm it by hand",
       "s1.body": "Make sure all three are already on your machine \u2014 self-installing is normally fine; if your machine needs IT to install software, send that request first.",
@@ -1144,6 +1202,7 @@ updates/applied/.../apply_log.json 的內容]
       "s5.teaser": "Don't ask for \"a complete system\" in one go",
       "s5.body": "Ask for exactly one thing at a time, and have the chatbot state which files it will touch and which acceptance criteria will pass before it acts.",
       "s5.prompt": "Before you make any changes, tell me: 1) which files you'll touch, 2) which acceptance criteria will pass afterward. Wait for my confirmation before producing a patch.",
+      "s5.caseLabel": "CASE EXAMPLE · single-source demo",
       "s5.exampleIntro": "Here's what that looks like in practice — a real starter request, ready to swap for your own situation:",
       "s5.exampleLabel": "REAL EXAMPLE PROMPT · swap in your own situation",
       "s5.examplePrompt": "Here's what I need: pipe an Excel report through the template's defined data pipeline into a web data app reachable on the company's internal network, with data that can be refreshed. Skip the public-facing website for now \u2014 deliberately keeping this simple. Data refresh starts as a manually-triggered script run.\n\nAttached is a screenshot of the report's layout (real sensitive data removed, only the field structure kept) so you can see how it's actually presented.\n\nBefore planning any code changes, please:\n1. List the questions you need me to answer that are still unclear (e.g. how often the report refreshes, who's the single owner of the data, which fields need validation rules) \u2014 ask rather than assume, except where the template itself already defines the rule.\n2. Break the whole request into a few small stages, each one a single acceptance-testable change on its own \u2014 not everything at once.\n3. For the first stage only, tell me which files you'll change and which acceptance criteria will pass once it's done, and wait for my confirmation before producing a patch.",
