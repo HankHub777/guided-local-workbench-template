@@ -10,19 +10,19 @@
 
 <style>
   :root {
-    --paper: #F2F5F2;
+    --paper: #F4F6F9;
     --surface: #FFFFFF;
-    --surface-2: #E7ECE7;
-    --ink: #1C241F;
-    --ink-soft: #55635B;
-    --ink-faint: #8C988F;
-    --line: #D6DCD5;
-    --line-strong: #BFC8BE;
-    --accent: #2C6B4C;
+    --surface-2: #E8ECF3;
+    --ink: #16233A;
+    --ink-soft: #47566E;
+    --ink-faint: #8592A8;
+    --line: #DCE2EA;
+    --line-strong: #C3CCD9;
+    --accent: #2B4F8C;
     --accent-ink: #FFFFFF;
-    --accent-soft: #E2EFE6;
-    --accent-warm: #A6531E;
-    --accent-warm-soft: #F4E4D6;
+    --accent-soft: #E4EAF5;
+    --accent-warm: #A85A1E;
+    --accent-warm-soft: #F3E4D4;
     --shadow: 0 24px 48px -28px rgba(20,26,22,0.38), 0 2px 8px rgba(20,26,22,0.08);
     --radius-lg: 18px;
     --radius-md: 12px;
@@ -34,17 +34,17 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #131917;
-      --surface: #1A211C;
-      --surface-2: #202822;
-      --ink: #E7ECE7;
-      --ink-soft: #A7B3AA;
-      --ink-faint: #6C7A71;
-      --line: #2A332C;
-      --line-strong: #3A453C;
-      --accent: #6FBF95;
-      --accent-ink: #0E1A13;
-      --accent-soft: #1E2E24;
+      --paper: #10161F;
+      --surface: #171E2A;
+      --surface-2: #1E2733;
+      --ink: #E4E9F1;
+      --ink-soft: #A9B4C4;
+      --ink-faint: #6F7C90;
+      --line: #29323F;
+      --line-strong: #3A4553;
+      --accent: #7FA3DE;
+      --accent-ink: #0B1220;
+      --accent-soft: #1D2A3D;
       --accent-warm: #E0925A;
       --accent-warm-soft: #3A2A1E;
       --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
@@ -52,17 +52,17 @@
   }
 
   :root[data-theme="dark"] {
-    --paper: #131917;
-    --surface: #1A211C;
-    --surface-2: #202822;
-    --ink: #E7ECE7;
-    --ink-soft: #A7B3AA;
-    --ink-faint: #6C7A71;
-    --line: #2A332C;
-    --line-strong: #3A453C;
-    --accent: #6FBF95;
-    --accent-ink: #0E1A13;
-    --accent-soft: #1E2E24;
+    --paper: #10161F;
+    --surface: #171E2A;
+    --surface-2: #1E2733;
+    --ink: #E4E9F1;
+    --ink-soft: #A9B4C4;
+    --ink-faint: #6F7C90;
+    --line: #29323F;
+    --line-strong: #3A4553;
+    --accent: #7FA3DE;
+    --accent-ink: #0B1220;
+    --accent-soft: #1D2A3D;
     --accent-warm: #E0925A;
     --accent-warm-soft: #3A2A1E;
     --shadow: 0 24px 48px -28px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.35);
@@ -174,6 +174,23 @@
   .page-head h1 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 700; }
   .lede { margin: 14px 0 0; color: var(--ink-soft); font-size: 16.5px; max-width: 62ch; }
 
+  .why-bother {
+    background: var(--accent-soft); border-radius: var(--radius-lg);
+    padding: 28px 30px; margin-bottom: 36px; max-width: 680px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .why-bother .eyebrow { color: var(--accent); }
+  .why-bother h2 {
+    font-family: var(--font-display); font-size: 19px; font-weight: 700;
+    margin: 0; text-wrap: balance; color: var(--ink);
+  }
+  .pain-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .pain-points li { font-size: 15px; line-height: 1.6; color: var(--ink); }
+  .why-bother .analogy {
+    font-family: var(--font-display); font-size: 15px; line-height: 1.75; color: var(--ink);
+    border-top: 1px solid var(--line-strong); padding-top: 16px; margin: 0;
+  }
+
   .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 700px; }
 
   .step {
@@ -229,10 +246,10 @@
 
   pre.term {
     margin: 0; font-family: var(--font-mono); font-size: 13px; line-height: 1.65;
-    background: #1C241F; color: #DCE7DF; border-radius: var(--radius-md);
+    background: #101B2C; color: #D7E1F0; border-radius: var(--radius-md);
     padding: 14px 16px; overflow-x: auto; white-space: pre;
   }
-  pre.term .dim { color: #7D8F84; }
+  pre.term .dim { color: #7C8CA3; }
 
   .why {
     margin: 0; padding-left: 12px; border-left: 2px solid var(--line-strong);
@@ -242,6 +259,20 @@
     font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
     letter-spacing: 0.06em; color: var(--ink-faint); margin-right: 6px;
   }
+
+  .case-card {
+    border: 1px dashed var(--line-strong); border-radius: var(--radius-md);
+    background: var(--surface-2); padding: 16px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .case-card-label {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+    font-family: var(--font-mono); font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--ink-faint);
+    border: 1px solid var(--line-strong); border-radius: 999px; padding: 3px 10px 3px 8px;
+  }
+  .case-card-label::before { content: "◆"; font-size: 7px; position: relative; top: -1px; }
+  .case-card > p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
 
   .decision-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
   .decision-list li {
@@ -360,6 +391,21 @@
     padding: 2px 6px; border-radius: 4px;
   }
 
+  .field-table-wrap { overflow-x: auto; }
+  .field-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  .field-table caption {
+    text-align: left; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--ink-faint); margin-bottom: 8px;
+  }
+  .field-table th, .field-table td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .field-table th {
+    font-family: var(--font-mono); font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.04em; color: var(--ink-faint); font-weight: 500; white-space: nowrap;
+  }
+  .field-table td { color: var(--ink-soft); }
+  .field-table td:first-child { color: var(--ink); white-space: nowrap; }
+  .field-table code { font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
+
   @media (max-width: 720px) {
     .app { flex-direction: column; padding: 16px 16px 64px; }
     .sidebar {
@@ -390,6 +436,9 @@
       <span class="nav-label" data-i18n="nav.label">專案導覽</span>
       <button class="nav-item active" data-target="panel-guide">
         <span class="nav-icon">◆</span><span data-i18n="nav.guide">視覺化指南</span>
+      </button>
+      <button class="nav-item" data-target="panel-two-source">
+        <span class="nav-icon">◎</span><span data-i18n="nav.twoSource">兩來源整合案例</span>
       </button>
       <button class="nav-item" data-target="panel-migration">
         <span class="nav-icon">◇</span><span data-i18n="nav.migration">單檔 HTML 遷移</span>
@@ -430,6 +479,17 @@
         <p class="lede" data-i18n="vg.lede">七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。</p>
       </header>
 
+      <section class="why-bother">
+        <p class="eyebrow" data-i18n="wb.eyebrow">為什麼要多走這一步</p>
+        <h2 data-i18n="wb.title">先別急著開始——這三個經驗你可能都有過</h2>
+        <ul class="pain-points">
+          <li data-i18n="wb.pain1">跟 chatbot 聊到第 50 輪，你請它加一個小功能，結果它把你前面調好的東西改壞了？</li>
+          <li data-i18n="wb.pain2">換了台電腦、或聊天工具的額度用完，你所有的「進度」瞬間歸零，只能重新解釋一次？</li>
+          <li data-i18n="wb.pain3">原始資料改了一個數字，整個工具就要重做一次，而不是自動更新？</li>
+        </ul>
+        <p class="analogy" data-i18n="wb.analogy">跟人口頭講好的事情，換一個人聽、隔一段時間，內容就會開始走樣；寫成白紙黑字的清單，不管誰接手、隔多久，內容都還在那裡。這個模板做的事，本質上就是把你原本只存在對話裡的默契，寫成白紙黑字——短期多一道手續，但這是唯一讓工具「活得比一次對話更久」的辦法。</p>
+      </section>
+
       <ol class="steps">
 
         <!-- Step 1 -->
@@ -445,7 +505,7 @@
             </summary>
             <div class="step-body">
               <p data-i18n="s1.body">確認這三個工具都已經裝在你的電腦上——自己的電腦通常直接安裝即可；公司電腦需要 IT 才能裝軟體的話，先把這三項需求送出去。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s1.why">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s1.why">後面的檢查腳本本身要靠 Python 才能執行，沒辦法用腳本反過來檢查 Python 存不存在，所以這一步只能手動確認。</span></p>
               <ul class="checklist">
                 <li><span class="tick">✓</span><span data-i18n="s1.item1">Python <code>3.13.2</code></span></li>
                 <li><span class="tick">✓</span><span data-i18n="s1.item2">Node.js（LTS 版本）</span></li>
@@ -479,7 +539,7 @@
               <pre class="term">cd <span class="dim">~/Documents/你的專案名稱</span>
 git init</pre>
               <p data-i18n="s2.checkBody">往下走之前，先跑一次環境檢查腳本。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s2.checkWhy">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s2.checkWhy">這支腳本唯讀，不會安裝或更動任何設定，只回報 Python、Node、Git 有沒有偵測到、有沒有代理（proxy）相關的環境變數——先跑一次，能提早抓到後面容易卡住的環境問題。</span></p>
               <pre class="term">python scripts/check_environment.py</pre>
             </div>
           </details>
@@ -555,7 +615,7 @@ git init</pre>
 
         <!-- Step 5 -->
         <li>
-          <details class="step">
+          <details class="step" id="guide-step-5">
             <summary>
               <span class="step-num">05</span>
               <span class="step-heading">
@@ -570,10 +630,12 @@ git init</pre>
                 <div class="prompt-box-head"><span data-i18n="prompt.label">節點提示 · 貼在你的需求前面</span></div>
                 <pre data-i18n="s5.prompt">在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。</pre>
               </div>
-              <p data-i18n="s5.exampleIntro">實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：</p>
-              <div class="prompt-box">
-                <div class="prompt-box-head"><span data-i18n="s5.exampleLabel">真實範例 PROMPT · 換成你自己的情境</span></div>
-                <pre data-i18n="s5.examplePrompt">我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。
+              <div class="case-card">
+                <span class="case-card-label" data-i18n="s5.caseLabel">案例情境 · 單一來源 Demo</span>
+                <p data-i18n="s5.exampleIntro">實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：</p>
+                <div class="prompt-box">
+                  <div class="prompt-box-head"><span data-i18n="s5.exampleLabel">真實範例 PROMPT · 換成你自己的情境</span></div>
+                  <pre data-i18n="s5.examplePrompt">我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。
 
 附上這份報告畫面的截圖（已移除真實敏感資料，只保留欄位結構），讓你看到實際的呈現方式。
 
@@ -581,6 +643,7 @@ git init</pre>
 1. 列出你需要我確認、但目前還不清楚的問題（例如報告多久更新一次、誰是資料的唯一負責人、有沒有需要驗證的欄位規則）——不清楚的地方用問的，不要用假設或猜測帶過，除非是模板本身已經定義好的規則。
 2. 把整個需求拆成幾個小階段，每個階段都是「一次可驗收」的獨立變更，不要一次做完。
 3. 針對第一個階段，先告訴我你會改哪些檔案、完成後哪些驗收條件會通過，我確認後你才開始動手，先不要直接輸出 patch。</pre>
+                </div>
               </div>
             </div>
           </details>
@@ -614,7 +677,7 @@ git init</pre>
                 <figcaption data-i18n="s6.shot2Caption">真實截圖：把下載好的 zip 放進 updates/incoming/ 資料夾</figcaption>
               </figure>
               <p data-i18n="s6.dryRunBody">先加 <code>--dry-run</code> 執行一次。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s6.dryRunWhy">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s6.dryRunWhy">這一步只會列出「打算」怎麼改，不會真的動任何檔案，讓你在真正套用前先確認內容對不對。</span></p>
               <pre class="term">python scripts/apply_update.py --dry-run</pre>
               <p data-i18n="s6.applyBody">確認過 dry-run 的內容沒問題之後，拿掉 <code>--dry-run</code> 再跑一次，這次才會真的套用。</p>
               <pre class="term">python scripts/apply_update.py</pre>
@@ -623,7 +686,7 @@ git init</pre>
                 <figcaption data-i18n="s6.shot3Caption">真實截圖：dry-run 跟正式套用的完整過程，最後印出要貼回聊天室的那一段（黃色反白處）</figcaption>
               </figure>
               <p data-i18n="s6.pasteBody">腳本跑完會印出一段文字，把它整段複製貼回聊天室。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s6.pasteWhy">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="s6.pasteWhy">chatbot 只知道自己「建議」了什麼，不知道你實際上有沒有全部照做——不貼回去的話，它會誤以為變更已經全部套用，接下來的建議可能建立在錯誤假設上。</span></p>
               <div class="chat">
                 <div class="bubble bubble--bot">
                   <span class="who" data-i18n="chat.bot">TERMINAL</span>
@@ -697,12 +760,16 @@ git init</pre>
             </summary>
             <div class="step-body">
               <p data-i18n="m1.body">這個流程會讓 chatbot 先提案怎麼拆，你再審查——不是自己動手拆，也不是讓腳本自動處理。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="m1.why">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="m1.why">把單檔 HTML 拆成 web/、shared/、data/、config/ 該有的樣子，需要判斷「這一段內容到底是什麼」，這不是固定腳本能可靠做到的事，但很適合讓 chatbot 提案、人來審查。</span></p>
               <p class="callout">
                 <span data-i18n="m1.calloutPrefix">開工前準備、拿到專案這兩件事，跟 Visual Guide 完全一樣，不重複列一次：</span>
                 <button class="jump-link" data-jump-panel="panel-guide" data-jump-step="guide-step-1" data-i18n="m1.jump1">跳到 Step 1</button>
                 <span> · </span>
                 <button class="jump-link" data-jump-panel="panel-guide" data-jump-step="guide-step-2" data-i18n="m1.jump2">跳到 Step 2</button>
+              </p>
+              <p class="callout">
+                <span data-i18n="m1.calloutPrefix2">如果你的單檔 HTML 本來就處理不只一種資料格式，建議先看過兩來源案例分頁再回來：</span>
+                <button class="jump-link" data-jump-panel="panel-two-source" data-jump-step="" data-i18n="m1.jumpTwoSource">前往兩來源整合案例</button>
               </p>
             </div>
           </details>
@@ -728,11 +795,47 @@ git init</pre>
               </div>
               <div class="prompt-box" id="m2-prompt-1">
                 <div class="prompt-box-head"><span data-i18n="m2.prompt1Label">PROMPT 1 · 完整盤點</span></div>
-                <pre data-i18n="m2.prompt1">PLACEHOLDER</pre>
+                <pre data-i18n="m2.prompt1">我有一個用單一 HTML 檔案做出來的既有原型（附加／貼在下面）。
+我想把它遷移成結構化的專案，但先不要產生任何檔案——
+這一步只做分類。
+
+請先讀附加的 LLM_CONTEXT_BUNDLE.md，了解目標專案結構與規則，
+特別是哪些檔案是 canonical——不應該有任何項目被分類成要放進
+canonical 檔案。
+
+逐一檢視這份單檔 HTML，把每一段獨立的內容分類進一張表格，欄位如下：
+- id：這段內容的簡短標籤（例如 "header-nav"、"sales-table-data"）
+- category：以下其中一種：`ui-component`、`styling`、`business-logic`、
+  `static-config`、`real-data`
+- description：一句話說明這是什麼
+- proposed_target：這段內容在模板結構裡應該變成的檔案路徑
+  （例如 `web/src/components/Header.tsx`、`shared/types.ts`、
+  `data/input/sales.csv`、`config/app.config.example.json`）
+- contains_real_data：yes/no——只要看起來像真實的營運數字、真實的
+  客戶或個人資訊、真實姓名、綁定實際事件的真實日期，或任何不是
+  佔位符／範例值的內容，都標成 "yes"。不確定的話，一律標 yes。
+
+只需要輸出這張分類表格。不要寫程式碼、不要產生任何檔案——
+我需要先審核這張表格。</pre>
               </div>
               <div class="prompt-box" id="m2-prompt-2" hidden>
                 <div class="prompt-box-head"><span data-i18n="m2.prompt2Label">PROMPT 2 · 分段盤點</span></div>
-                <pre data-i18n="m2.prompt2">PLACEHOLDER</pre>
+                <pre data-i18n="m2.prompt2">我有一個用單一 HTML 檔案做出來的既有原型。它大到我想一次遷移一個
+功能／區塊，而不是整份一次處理。
+
+請先讀附加的 LLM_CONTEXT_BUNDLE.md，了解目標專案結構與規則。
+
+這一輪，我只給你這個區塊：[描述這個區塊——例如「儀表板摘要面板，
+大概在第 120 到 340 行」]。用跟完整遷移一樣的表格格式，只分類
+這個區塊：
+- id、category（ui-component / styling / business-logic /
+  static-config / real-data）、description、proposed_target、
+  contains_real_data（yes/no）
+
+不要參照或假設任何我還沒給你的部分。不要產生任何檔案——
+只要分類表格。
+
+這個區塊審核通過並遷移完成後，我會再拿下一個區塊回來。</pre>
               </div>
             </div>
           </details>
@@ -754,7 +857,7 @@ git init</pre>
               <ul class="checklist">
                 <li><span class="tick">✓</span><span data-i18n="m3.item1">標記 contains_real_data: yes 的項目，目標一定要在 data/input/ 底下，不能落到會進 Git 的路徑</span></li>
                 <li><span class="tick">✓</span><span data-i18n="m3.item2">沒有任何一項的目標應該是 canonical 路徑</span></li>
-                <li><span class="tick">✓</span><span data-i18n="m3.item3">同一段邏輯在原檔案裡重複貼了好幾次的話，要求合併成一份 shared/，不要分開遷移</span></li>
+                <li><span class="tick">✓</span><span data-i18n="m3.item3">同一段邏輯在原檔案裡重複貼了好幾次的話，要求合併成一份 shared/，不要分開遷移</span> <span data-i18n="m3.item3jumpPrefix">——這個判斷怎麼做，見</span> <button class="jump-link" data-jump-panel="panel-two-source" data-jump-step="" data-i18n="m3.item3jump">兩來源整合案例</button></li>
                 <li><span class="tick">✓</span><span data-i18n="m3.item4">表格長到你在「滑過去」而不是「讀」的時候，回頭改用分段做（Prompt 2）</span></li>
               </ul>
               <div class="chat">
@@ -786,7 +889,25 @@ git init</pre>
               <p data-i18n="m4.body">把你審核、修正過的分類表貼給 chatbot，執行下面這個 prompt。輸出格式跟平常的 update 包完全一樣：一個 update_YYYYMMDD_HHMMSS.zip，裡面附 manifest.json。</p>
               <div class="prompt-box">
                 <div class="prompt-box-head"><span data-i18n="m4.promptLabel">PROMPT 3 · 拆分與打包</span></div>
-                <pre data-i18n="m4.prompt">PLACEHOLDER</pre>
+                <pre data-i18n="m4.prompt">以下是這次遷移這一輪、已經審核通過的分類表格：
+
+[貼上審核通過的表格]
+
+請依照 LLM_CONTEXT_BUNDLE.md 裡的目標專案結構與規則，
+為表格裡的每一列產生實際檔案：
+- 把所有東西打包成一個 zip，檔名用今天的日期時間，
+  命名為 `update_YYYYMMDD_HHMMSS.zip`。
+- zip 根目錄放一份 `manifest.json`，列出每個檔案的
+  `path`、`type: "added"`，以及一句話的 `reason`
+  （註明這是來自分類表格的哪個 id）。
+- 任何標記 `contains_real_data: yes` 的項目，一定要放進
+  `data/input/` 底下——絕對不要放進會被追蹤的路徑。
+- 不要產生或修改任何 canonical 路徑上的內容
+  （見 bundle 裡的 docs/TEMPLATE_BOUNDARY.md）。如果某一列的
+  proposed_target 是 canonical 路徑，請停下來告訴我，不要直接產生。
+- 每個產生出來的檔案要保持專注——不要把不相關的項目合併成同一個檔案。
+
+把 zip 給我下載。</pre>
               </div>
             </div>
           </details>
@@ -805,7 +926,7 @@ git init</pre>
             </summary>
             <div class="step-body">
               <p data-i18n="m5.body">把拿到的 zip 放進 updates/incoming/，執行 apply_update.py。</p>
-              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="m5.why">PLACEHOLDER</span></p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="m5.why">遷移這種規模的變動牽涉的檔案數量多，--dry-run 這一步尤其不要跳過——先看過完整計畫，再決定要不要真的套用。</span></p>
               <p class="callout">
                 <button class="jump-link" data-jump-panel="panel-guide" data-jump-step="guide-step-6" data-i18n="m5.jump">跳到 Step 6 看完整流程與截圖</button>
               </p>
@@ -828,10 +949,278 @@ git init</pre>
               <p data-i18n="m6.body">套用完之後，用這個 prompt 請 chatbot 幫你比對新舊行為：</p>
               <div class="prompt-box">
                 <div class="prompt-box-head"><span data-i18n="m6.promptLabel">PROMPT 4 · 一致性檢查</span></div>
-                <pre data-i18n="m6.prompt">PLACEHOLDER</pre>
+                <pre data-i18n="m6.prompt">我已經套用了遷移更新。以下是實際發生的結果：
+
+[貼上 apply_update.py 印出的 sync note，或
+updates/applied/.../apply_log.json 的內容]
+
+以下是原始單檔 HTML，供你參考：
+
+[貼上或附加它]
+
+請協助我確認遷移過程沒有遺漏任何東西：
+1. 列出你在原始檔案裡看得出來的每一個使用者可見的流程或互動功能
+   （例如「點擊 X 會篩選表格」、「表單送出後會顯示 Y」）。
+2. 針對每一項，告訴我根據分類結果，它現在應該落在哪個／哪些新檔案裡。
+3. 標出原始檔案裡有、但在新結構裡完全看不到對應內容的部分——
+   這是潛在的遺漏，不要假設沒問題。
+
+我會自己把新版本裡的每個流程都手動點過一遍，確認過才會把
+這次遷移當作完成。</pre>
               </div>
               <p data-i18n="m6.after1">原始的單檔 HTML 不會自動被刪除。要留著當存檔參考、還是確認一致後刪掉，由你自己決定——這個流程不會替你做這個決定。</p>
               <p data-i18n="m6.after2">從這裡開始，回到 Visual Guide 一般的小改動循環：一次一個可驗收的需求，透過同一套 apply_update.py 流程套用。</p>
+            </div>
+          </details>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- ===== Two-Source Integration Case Study ===== -->
+    <section id="panel-two-source" class="panel">
+      <header class="page-head">
+        <p class="eyebrow" data-i18n="ts.eyebrow">CASE STUDY</p>
+        <h1 data-i18n="ts.pageTitle">把兩個格式不同的資料來源，變成一份可信賴的資料</h1>
+        <p class="lede" data-i18n="ts.lede">用最小的假資料，示範怎麼把兩個各自記錄一部分事實的來源，對齊成一份 web data app 能用的資料。這裡建立的心智模型，遷移一個真實、混亂的單檔 HTML 時也用得到——建議先看完這裡，再去遷移分頁。</p>
+      </header>
+
+      <ol class="steps">
+
+        <!-- TS Step 1 -->
+        <li>
+          <details class="step" open>
+            <summary>
+              <span class="step-num">01</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts1.title">情境介紹：為什麼兩個來源不能直接合併</span>
+                <span class="step-teaser" data-i18n="ts1.teaser">先建立這個案例要解決的問題長什麼樣子</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts1.body">想像一間公司換了出貨系統：舊系統直接記錄出了幾「箱」，新系統因為工人是一件一件點貨，改記錄幾「件」再另外給一個換算係數。換系統的過渡期，兩邊資料格式不一樣，想知道「這個月到底出了多少貨」就得先把兩邊對齊。</p>
+              <svg viewBox="0 0 680 570" role="img" aria-label="兩套倉儲系統資料整合流程" style="width:100%;height:auto;display:block;">
+<defs><marker id="ts-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="var(--line-strong)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="60" y="40" width="260" height="80" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+<text x="190" y="72" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="14" fill="var(--accent)" data-i18n="ts.diagA">倉儲系統 A（舊）</text>
+<text x="190" y="94" text-anchor="middle" font-family="var(--font-mono)" font-size="11.5" fill="var(--accent)" data-i18n="ts.diagASub">以「箱」記錄出貨量</text>
+<rect x="360" y="40" width="260" height="80" rx="6" fill="var(--accent-warm-soft)" stroke="var(--accent-warm)" stroke-width="1"/>
+<text x="490" y="72" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="14" fill="var(--accent-warm)" data-i18n="ts.diagB">倉儲系統 B（新）</text>
+<text x="490" y="94" text-anchor="middle" font-family="var(--font-mono)" font-size="11.5" fill="var(--accent-warm)" data-i18n="ts.diagBSub">以「件」記錄＋換算係數</text>
+<line x1="190" y1="120" x2="270" y2="196" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+<line x1="490" y1="120" x2="410" y2="196" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+<rect x="170" y="200" width="340" height="120" rx="6" fill="var(--surface-2)" stroke="var(--line-strong)" stroke-width="1"/>
+<text x="340" y="228" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="14" fill="var(--ink)" data-i18n="ts.diagMid">格式對齊與換算</text>
+<text x="340" y="252" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--ink-soft)" data-i18n="ts.diagMid1">日期欄位名稱不同，要對齊</text>
+<text x="340" y="272" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--ink-soft)" data-i18n="ts.diagMid2">分類代碼不同，需要對照</text>
+<text x="340" y="292" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--ink-soft)" data-i18n="ts.diagMid3">件數 ÷ 係數 = 箱數</text>
+<line x1="340" y1="320" x2="340" y2="366" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+<rect x="170" y="370" width="340" height="70" rx="6" fill="var(--surface-2)" stroke="var(--line-strong)" stroke-width="1"/>
+<text x="340" y="400" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="14" fill="var(--ink)" data-i18n="ts.diagUnified">整合後的出貨資料</text>
+<text x="340" y="422" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--ink-soft)" data-i18n="ts.diagUnifiedSub">同一份、可信賴的資料</text>
+<line x1="340" y1="440" x2="340" y2="486" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#ts-arrow)"/>
+<rect x="250" y="490" width="180" height="60" rx="6" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+<text x="340" y="518" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="14" fill="var(--accent)" data-i18n="ts.diagApp">Web Data App</text>
+<text x="340" y="538" text-anchor="middle" font-family="var(--font-mono)" font-size="11" fill="var(--accent)" data-i18n="ts.diagAppSub">篩選、圖表、報表</text>
+</svg>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="ts1.why">為什麼舉倉儲當例子：倉儲只是具體畫面，真正的重點是「兩套系統各自記錄一部分事實、格式還不一樣」——業務換 CRM、部門各自維護 Excel，都是同一個模式，換個名詞就是你自己的情況。</span></p>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 2 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">02</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts2.title">攤開兩份來源實際長什麼樣子</span>
+                <span class="step-teaser" data-i18n="ts2.teaser">先看資料，再看問題</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts2.body">以下是這兩套系統實際匯出的欄位——這是這個案例專屬的示範資料，換成你自己的情況就是同一個問題。</p>
+              <div class="case-card">
+                <span class="case-card-label" data-i18n="ts2.caseLabel">案例情境 · 兩來源整合 Demo</span>
+                <div class="field-table-wrap">
+                  <table class="field-table">
+                    <caption data-i18n="ts2.tableACaption">來源 A：倉儲系統 A（舊）匯出</caption>
+                    <thead><tr>
+                      <th data-i18n="ts.colField">欄位</th><th data-i18n="ts.colType">型態</th><th data-i18n="ts.colPurpose">用意</th>
+                    </tr></thead>
+                    <tbody>
+                      <tr><td><code>order_date</code></td><td data-i18n="ts2.aType1">日期</td><td data-i18n="ts2.aPurpose1">時間序列分組，UI 的時間篩選</td></tr>
+                      <tr><td><code>product_line</code></td><td data-i18n="ts2.aType2">字串列舉（文具／家電／食品）</td><td data-i18n="ts2.aPurpose2">分類篩選、圖例</td></tr>
+                      <tr><td><code>warehouse_id</code></td><td data-i18n="ts2.aType3">字串列舉</td><td data-i18n="ts2.aPurpose3">據點維度</td></tr>
+                      <tr><td><code>qty_boxes</code></td><td data-i18n="ts2.aType4">整數</td><td data-i18n="ts2.aPurpose4">已換算單位——「當量」那一側</td></tr>
+                      <tr><td><code>on_time_rate</code></td><td data-i18n="ts2.aType5">小數 0–1</td><td data-i18n="ts2.aPurpose5">來源直接提供的比率，要直接用、不能重算</td></tr>
+                      <tr><td><code>status</code></td><td data-i18n="ts2.aType6">字串列舉（已出貨／退回／取消）</td><td data-i18n="ts2.aPurpose6">正式母體篩選用的資格欄位</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="field-table-wrap">
+                  <table class="field-table">
+                    <caption data-i18n="ts2.tableBCaption">來源 B：倉儲系統 B（新）匯出</caption>
+                    <thead><tr>
+                      <th data-i18n="ts.colField">欄位</th><th data-i18n="ts.colType">型態</th><th data-i18n="ts.colPurpose">用意</th>
+                    </tr></thead>
+                    <tbody>
+                      <tr><td><code>ship_date</code></td><td data-i18n="ts2.bType1">日期</td><td data-i18n="ts2.bPurpose1">概念同 order_date，但欄位名不同</td></tr>
+                      <tr><td><code>category_code</code></td><td data-i18n="ts2.bType2">字串列舉（STA／APL／FOD）</td><td data-i18n="ts2.bPurpose2">同一個分類概念，不同代碼系統</td></tr>
+                      <tr><td><code>pieces_per_box</code></td><td data-i18n="ts2.bType3">整數（係數）</td><td data-i18n="ts2.bPurpose3">換算係數本身</td></tr>
+                      <tr><td><code>qty_pieces</code></td><td data-i18n="ts2.bType4">整數</td><td data-i18n="ts2.bPurpose4">原始單位，要除以 pieces_per_box 才能對齊</td></tr>
+                      <tr><td><code>fulfilled_flag</code></td><td data-i18n="ts2.bType5">布林值</td><td data-i18n="ts2.bPurpose5">概念同 status，但用布林而不是列舉</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <ul class="checklist">
+                <li><span class="tick">✓</span><span data-i18n="ts2.item1">欄位命名不同（order_date vs ship_date）——不能假設同名才是同一個 join key</span></li>
+                <li><span class="tick">✓</span><span data-i18n="ts2.item2">分類編碼不同（中文分類 vs 英文代碼）——需要一份對照表</span></li>
+                <li><span class="tick">✓</span><span data-i18n="ts2.item3">單位不同——qty_boxes 已換算，qty_pieces 要除以 pieces_per_box 才能對齊</span></li>
+                <li><span class="tick">✓</span><span data-i18n="ts2.item4">資格欄位型態不同——列舉 vs 布林，要統一成同一種表示法</span></li>
+                <li><span class="tick">✓</span><span data-i18n="ts2.item5">on_time_rate 是來源直接提供的比率——要直接使用，不要自己重新計算</span></li>
+              </ul>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 3 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">03</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts3.title">寫下契約：整合後應該長什麼樣子</span>
+                <span class="step-teaser" data-i18n="ts3.teaser">先講好目標形狀，再動手轉換</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts3.body">在動手轉換資料之前，先定義好「整合後的一份資料」該有的欄位——這就是模板裡 <code>shared/</code>、<code>docs/DATA_CONTRACT.md</code> 在做的事。</p>
+              <div class="field-table-wrap">
+                <table class="field-table">
+                  <caption data-i18n="ts3.tableCaption">整合後的統一欄位</caption>
+                  <thead><tr>
+                    <th data-i18n="ts.colField">欄位</th><th data-i18n="ts.colType">型態</th><th data-i18n="ts.colPurpose">來源</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr><td><code>date</code></td><td data-i18n="ts3.type1">日期</td><td data-i18n="ts3.from1">統一自 order_date / ship_date</td></tr>
+                    <tr><td><code>category</code></td><td data-i18n="ts3.type2">字串列舉（共用代碼）</td><td data-i18n="ts3.from2">統一自 product_line 對照表、category_code</td></tr>
+                    <tr><td><code>qty_boxes_equivalent</code></td><td data-i18n="ts3.type3">整數</td><td data-i18n="ts3.from3">來源 B 用 qty_pieces ÷ pieces_per_box 換算</td></tr>
+                    <tr><td><code>eligible</code></td><td data-i18n="ts3.type4">布林值</td><td data-i18n="ts3.from4">統一自 status（已出貨=true）、fulfilled_flag</td></tr>
+                    <tr><td><code>on_time_rate</code></td><td data-i18n="ts3.type5">小數 0–1</td><td data-i18n="ts3.from5">直接沿用來源，不重算</td></tr>
+                    <tr><td><code>source</code></td><td data-i18n="ts3.type6">字串列舉（A／B）</td><td data-i18n="ts3.from6">保留資料來源，方便追溯</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="ts3.why">為什麼要保留 source 欄位：資料整合完之後，如果哪天發現一筆資料有問題，你需要知道它原本是從哪個系統來的才能回頭查證——這叫資料血緣，不是多此一舉。</span></p>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 4 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">04</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts4.title">提出需求：讓 chatbot 先列出不清楚的地方</span>
+                <span class="step-teaser" data-i18n="ts4.teaser">沿用 Step 5 教過的模式，換一個這個案例的範例</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts4.body">跟 Visual Guide 教的一樣：先讓 chatbot 說清楚不確定的地方，再讓它動手轉換。</p>
+              <p class="callout">
+                <button class="jump-link" data-jump-panel="panel-guide" data-jump-step="guide-step-5" data-i18n="ts4.jump">跳到 Step 5 看一般規則</button>
+              </p>
+              <div class="case-card">
+                <span class="case-card-label" data-i18n="ts4.caseLabel">案例情境 · 兩來源整合 Demo</span>
+                <div class="prompt-box">
+                  <div class="prompt-box-head"><span data-i18n="ts4.promptLabel">真實範例 PROMPT · 換成你自己的兩份資料</span></div>
+                  <pre data-i18n="ts4.prompt">我有兩份倉儲系統匯出的資料（附上兩份的欄位說明），想整合成同一份可信賴的出貨資料，供 web data app 使用。
+
+在你開始寫轉換規則之前，請先：
+1. 列出這兩份資料裡，你覺得需要我確認、但目前還不清楚的欄位對應（例如分類代碼要怎麼對照、資格欄位要怎麼統一）——不要用假設或猜測帶過。
+2. 說明遇到「換算係數缺漏或是 0」這種情況時，你打算怎麼處理。
+3. 先告訴我你會怎麼寫這個轉換規則、會產生哪些檔案，我確認後你才開始動手。</pre>
+                </div>
+              </div>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 5 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">05</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts5.title">驗證規則：不合理的資料要被擋下來</span>
+                <span class="step-teaser" data-i18n="ts5.teaser">這是這個案例最重要的工程教訓</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts5.body">換算係數如果缺漏或是 0，不能悄悄當作 1 處理——這種資料要被擋下來、記錄下來，不能被系統默默接受。</p>
+              <div class="dual">
+                <div class="dual-card bad">
+                  <span class="dual-label" data-i18n="ts5.badLabel">✕ 錯誤示範</span>
+                  <div class="chat">
+                    <div class="bubble bubble--human"><p data-i18n="ts5.bad1">pieces_per_box 這欄有些是空的，怎麼辦？</p></div>
+                    <div class="bubble bubble--bot"><p data-i18n="ts5.bad2">空的就當作 1，先讓它跑起來。</p></div>
+                  </div>
+                </div>
+                <div class="dual-card good">
+                  <span class="dual-label" data-i18n="ts5.goodLabel">✓ 正確示範</span>
+                  <div class="chat">
+                    <div class="bubble bubble--human"><p data-i18n="ts5.good1">pieces_per_box 這欄有些是空的，怎麼辦？</p></div>
+                    <div class="bubble bubble--bot"><p data-i18n="ts5.good2">這種資料我會直接拒絕、不會猜一個預設值——換算係數缺漏代表這筆資料本身有問題，硬套一個值進去，算出來的數量會是錯的，而且你不會知道它是錯的。我會把這些筆數記錄下來給你看，你再決定要修正原始資料還是排除。</p></div>
+                  </div>
+                </div>
+              </div>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="ts5.why">為什麼不能猜一個預設值：換算係數缺漏通常代表資料本身有問題，用猜的值硬套進去，算出來的加總會是錯的，而且你不會知道它是錯的。</span></p>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 6 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">06</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts6.title">套用更新</span>
+                <span class="step-teaser" data-i18n="ts6.teaser">機制跟 Visual Guide Step 6 完全一樣</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts6.body">把 chatbot 產生的更新包放進 <code>updates/incoming/</code>，執行 <code>apply_update.py</code>——這一步不重複列一次。</p>
+              <p class="callout">
+                <button class="jump-link" data-jump-panel="panel-guide" data-jump-step="guide-step-6" data-i18n="ts6.jump">跳到 Step 6 看完整流程與截圖</button>
+              </p>
+            </div>
+          </details>
+        </li>
+
+        <!-- TS Step 7 -->
+        <li>
+          <details class="step">
+            <summary>
+              <span class="step-num">07</span>
+              <span class="step-heading">
+                <span class="step-title" data-i18n="ts7.title">看結果：兩個來源變成一份 Web Data App</span>
+                <span class="step-teaser" data-i18n="ts7.teaser">這就是這個案例真正的終點</span>
+              </span>
+              <span class="chevron">⌄</span>
+            </summary>
+            <div class="step-body">
+              <p data-i18n="ts7.body">整合完成後，前端可以直接用這份統一資料做時間篩選、分類篩選、加總數量、顯示比率——這些操作在資料還沒對齊之前是做不到的。</p>
+              <p class="why"><span class="why-label" data-i18n="why.label">為什麼</span><span data-i18n="ts7.why">三個以上來源，是同一個模式重複套用，不會比兩個來源更難——這也是為什麼這個案例只做到兩個來源就停在這裡。</span></p>
             </div>
           </details>
         </li>
@@ -888,6 +1277,12 @@ git init</pre>
       "vg.eyebrow": "VISUAL GUIDE",
       "vg.title": "從零開始，跟著 LLM 蓋一個屬於自己的工作台",
       "vg.lede": "七個段落，對應你實際會走過的七個階段。每一段都可以收合展開，需要動手的地方會附上真實截圖與逐字對話——照著做，不用先想像。",
+      "wb.eyebrow": "為什麼要多走這一步",
+      "wb.title": "先別急著開始——這三個經驗你可能都有過",
+      "wb.pain1": "跟 chatbot 聊到第 50 輪，你請它加一個小功能，結果它把你前面調好的東西改壞了？",
+      "wb.pain2": "換了台電腦、或聊天工具的額度用完，你所有的「進度」瞬間歸零，只能重新解釋一次？",
+      "wb.pain3": "原始資料改了一個數字，整個工具就要重做一次，而不是自動更新？",
+      "wb.analogy": "跟人口頭講好的事情，換一個人聽、隔一段時間，內容就會開始走樣；寫成白紙黑字的清單，不管誰接手、隔多久，內容都還在那裡。這個模板做的事，本質上就是把你原本只存在對話裡的默契，寫成白紙黑字——短期多一道手續，但這是唯一讓工具「活得比一次對話更久」的辦法。",
       "s1.title": "開工前準備：三個工具要先到位",
       "s1.teaser": "這一步沒辦法靠腳本自動驗證，只能手動確認",
       "s1.body": "確認這三個工具都已經裝在你的電腦上——自己的電腦通常直接安裝即可；公司電腦需要 IT 才能裝軟體的話，先把這三項需求送出去。",
@@ -934,6 +1329,7 @@ git init</pre>
       "s5.teaser": "不要一次要求「做一個完整系統」",
       "s5.body": "每次只講一件事，並要求 chatbot 先說清楚會改哪些檔案、哪些驗收條件會過，再讓它動手。",
       "s5.prompt": "在你開始改之前，先告訴我：1）你會改哪些檔案 2）改完之後哪些驗收條件會通過。確認過我再讓你動手，先不要直接輸出 patch。",
+      "s5.caseLabel": "案例情境 · 單一來源 Demo",
       "s5.exampleIntro": "實際狀況看起來會像這樣——這是一個真實的起手式需求範例，換成你自己的情境即可：",
       "s5.exampleLabel": "真實範例 PROMPT · 換成你自己的情境",
       "s5.examplePrompt": "我要做的需求：把一份 Excel 報告，透過模板定義的資料管線，串接成一個能在公司內網存取、資料可更新的 web data app；先不做對外網站，刻意簡化這部分。資料更新先用手動觸發腳本執行。\n\n附上這份報告畫面的截圖（已移除真實敏感資料，只保留欄位結構），讓你看到實際的呈現方式。\n\n在你開始規劃任何程式改動之前，請先：\n1. 列出你需要我確認、但目前還不清楚的問題（例如報告多久更新一次、誰是資料的唯一負責人、有沒有需要驗證的欄位規則）——不清楚的地方用問的，不要用假設或猜測帶過，除非是模板本身已經定義好的規則。\n2. 把整個需求拆成幾個小階段，每個階段都是「一次可驗收」的獨立變更，不要一次做完。\n3. 針對第一個階段，先告訴我你會改哪些檔案、完成後哪些驗收條件會通過，我確認後你才開始動手，先不要直接輸出 patch。",
@@ -959,6 +1355,104 @@ git init</pre>
       "s7.goodLabel": "✓ 正確示範",
       "s7.good1": "順便把 README 也改成我們專案的名字吧",
       "s7.good2": "README.md 屬於模板契約檔案，一般專案改動不建議動它。要改的話，我先列出跟 TEMPLATE_BOUNDARY.md 的落差，你確認後再動手，可以嗎？",
+      "nav.twoSource": "兩來源整合案例",
+      "ts.eyebrow": "CASE STUDY",
+      "ts.pageTitle": "把兩個格式不同的資料來源，變成一份可信賴的資料",
+      "ts.lede": "用最小的假資料，示範怎麼把兩個各自記錄一部分事實的來源，對齊成一份 web data app 能用的資料。這裡建立的心智模型，遷移一個真實、混亂的單檔 HTML 時也用得到——建議先看完這裡，再去遷移分頁。",
+      "ts1.title": "情境介紹：為什麼兩個來源不能直接合併",
+      "ts1.teaser": "先建立這個案例要解決的問題長什麼樣子",
+      "ts1.body": "想像一間公司換了出貨系統：舊系統直接記錄出了幾「箱」，新系統因為工人是一件一件點貨，改記錄幾「件」再另外給一個換算係數。換系統的過渡期，兩邊資料格式不一樣，想知道「這個月到底出了多少貨」就得先把兩邊對齊。",
+      "ts1.why": "為什麼舉倉儲當例子：倉儲只是具體畫面，真正的重點是「兩套系統各自記錄一部分事實、格式還不一樣」——業務換 CRM、部門各自維護 Excel，都是同一個模式，換個名詞就是你自己的情況。",
+      "ts.diagA": "倉儲系統 A（舊）",
+      "ts.diagASub": "以「箱」記錄出貨量",
+      "ts.diagB": "倉儲系統 B（新）",
+      "ts.diagBSub": "以「件」記錄＋換算係數",
+      "ts.diagMid": "格式對齊與換算",
+      "ts.diagMid1": "日期欄位名稱不同，要對齊",
+      "ts.diagMid2": "分類代碼不同，需要對照",
+      "ts.diagMid3": "件數 ÷ 係數 = 箱數",
+      "ts.diagUnified": "整合後的出貨資料",
+      "ts.diagUnifiedSub": "同一份、可信賴的資料",
+      "ts.diagApp": "Web Data App",
+      "ts.diagAppSub": "篩選、圖表、報表",
+      "ts2.title": "攤開兩份來源實際長什麼樣子",
+      "ts2.teaser": "先看資料，再看問題",
+      "ts2.body": "以下是這兩套系統實際匯出的欄位——這是這個案例專屬的示範資料，換成你自己的情況就是同一個問題。",
+      "ts2.caseLabel": "案例情境 · 兩來源整合 Demo",
+      "ts2.tableACaption": "來源 A：倉儲系統 A（舊）匯出",
+      "ts2.tableBCaption": "來源 B：倉儲系統 B（新）匯出",
+      "ts.colField": "欄位",
+      "ts.colType": "型態",
+      "ts.colPurpose": "用意",
+      "ts2.aType1": "日期",
+      "ts2.aPurpose1": "時間序列分組，UI 的時間篩選",
+      "ts2.aType2": "字串列舉（文具／家電／食品）",
+      "ts2.aPurpose2": "分類篩選、圖例",
+      "ts2.aType3": "字串列舉",
+      "ts2.aPurpose3": "據點維度",
+      "ts2.aType4": "整數",
+      "ts2.aPurpose4": "已換算單位——「當量」那一側",
+      "ts2.aType5": "小數 0–1",
+      "ts2.aPurpose5": "來源直接提供的比率，要直接用、不能重算",
+      "ts2.aType6": "字串列舉（已出貨／退回／取消）",
+      "ts2.aPurpose6": "正式母體篩選用的資格欄位",
+      "ts2.bType1": "日期",
+      "ts2.bPurpose1": "概念同 order_date，但欄位名不同",
+      "ts2.bType2": "字串列舉（STA／APL／FOD）",
+      "ts2.bPurpose2": "同一個分類概念，不同代碼系統",
+      "ts2.bType3": "整數（係數）",
+      "ts2.bPurpose3": "換算係數本身",
+      "ts2.bType4": "整數",
+      "ts2.bPurpose4": "原始單位，要除以 pieces_per_box 才能對齊",
+      "ts2.bType5": "布林值",
+      "ts2.bPurpose5": "概念同 status，但用布林而不是列舉",
+      "ts2.item1": "欄位命名不同（order_date vs ship_date）——不能假設同名才是同一個 join key",
+      "ts2.item2": "分類編碼不同（中文分類 vs 英文代碼）——需要一份對照表",
+      "ts2.item3": "單位不同——qty_boxes 已換算，qty_pieces 要除以 pieces_per_box 才能對齊",
+      "ts2.item4": "資格欄位型態不同——列舉 vs 布林，要統一成同一種表示法",
+      "ts2.item5": "on_time_rate 是來源直接提供的比率——要直接使用，不要自己重新計算",
+      "ts3.title": "寫下契約：整合後應該長什麼樣子",
+      "ts3.teaser": "先講好目標形狀，再動手轉換",
+      "ts3.body": "在動手轉換資料之前，先定義好「整合後的一份資料」該有的欄位——這就是模板裡 shared/、docs/DATA_CONTRACT.md 在做的事。",
+      "ts3.tableCaption": "整合後的統一欄位",
+      "ts3.type1": "日期",
+      "ts3.from1": "統一自 order_date / ship_date",
+      "ts3.type2": "字串列舉（共用代碼）",
+      "ts3.from2": "統一自 product_line 對照表、category_code",
+      "ts3.type3": "整數",
+      "ts3.from3": "來源 B 用 qty_pieces ÷ pieces_per_box 換算",
+      "ts3.type4": "布林值",
+      "ts3.from4": "統一自 status（已出貨=true）、fulfilled_flag",
+      "ts3.type5": "小數 0–1",
+      "ts3.from5": "直接沿用來源，不重算",
+      "ts3.type6": "字串列舉（A／B）",
+      "ts3.from6": "保留資料來源，方便追溯",
+      "ts3.why": "為什麼要保留 source 欄位：資料整合完之後，如果哪天發現一筆資料有問題，你需要知道它原本是從哪個系統來的才能回頭查證——這叫資料血緣，不是多此一舉。",
+      "ts4.title": "提出需求：讓 chatbot 先列出不清楚的地方",
+      "ts4.teaser": "沿用 Step 5 教過的模式，換一個這個案例的範例",
+      "ts4.body": "跟 Visual Guide 教的一樣：先讓 chatbot 說清楚不確定的地方，再讓它動手轉換。",
+      "ts4.jump": "跳到 Step 5 看一般規則",
+      "ts4.caseLabel": "案例情境 · 兩來源整合 Demo",
+      "ts4.promptLabel": "真實範例 PROMPT · 換成你自己的兩份資料",
+      "ts4.prompt": "我有兩份倉儲系統匯出的資料（附上兩份的欄位說明），想整合成同一份可信賴的出貨資料，供 web data app 使用。\n\n在你開始寫轉換規則之前，請先：\n1. 列出這兩份資料裡，你覺得需要我確認、但目前還不清楚的欄位對應（例如分類代碼要怎麼對照、資格欄位要怎麼統一）——不要用假設或猜測帶過。\n2. 說明遇到「換算係數缺漏或是 0」這種情況時，你打算怎麼處理。\n3. 先告訴我你會怎麼寫這個轉換規則、會產生哪些檔案，我確認後你才開始動手。",
+      "ts5.title": "驗證規則：不合理的資料要被擋下來",
+      "ts5.teaser": "這是這個案例最重要的工程教訓",
+      "ts5.body": "換算係數如果缺漏或是 0，不能悄悄當作 1 處理——這種資料要被擋下來、記錄下來，不能被系統默默接受。",
+      "ts5.badLabel": "✕ 錯誤示範",
+      "ts5.bad1": "pieces_per_box 這欄有些是空的，怎麼辦？",
+      "ts5.bad2": "空的就當作 1，先讓它跑起來。",
+      "ts5.goodLabel": "✓ 正確示範",
+      "ts5.good1": "pieces_per_box 這欄有些是空的，怎麼辦？",
+      "ts5.good2": "這種資料我會直接拒絕、不會猜一個預設值——換算係數缺漏代表這筆資料本身有問題，硬套一個值進去，算出來的數量會是錯的，而且你不會知道它是錯的。我會把這些筆數記錄下來給你看，你再決定要修正原始資料還是排除。",
+      "ts5.why": "為什麼不能猜一個預設值：換算係數缺漏通常代表資料本身有問題，用猜的值硬套進去，算出來的加總會是錯的，而且你不會知道它是錯的。",
+      "ts6.title": "套用更新",
+      "ts6.teaser": "機制跟 Visual Guide Step 6 完全一樣",
+      "ts6.body": "把 chatbot 產生的更新包放進 updates/incoming/，執行 apply_update.py——這一步不重複列一次。",
+      "ts6.jump": "跳到 Step 6 看完整流程與截圖",
+      "ts7.title": "看結果：兩個來源變成一份 Web Data App",
+      "ts7.teaser": "這就是這個案例真正的終點",
+      "ts7.body": "整合完成後，前端可以直接用這份統一資料做時間篩選、分類篩選、加總數量、顯示比率——這些操作在資料還沒對齊之前是做不到的。",
+      "ts7.why": "三個以上來源，是同一個模式重複套用，不會比兩個來源更難——這也是為什麼這個案例只做到兩個來源就停在這裡。",
       "ph.architecture.title": "架構規則",
       "ph.architecture.body": "對應 ai/ARCHITECTURE_RULES.md，之後會做成同樣的段落式視覺內容。",
       "ph.data.title": "資料契約",
@@ -978,6 +1472,8 @@ git init</pre>
       "m1.calloutPrefix": "開工前準備、拿到專案這兩件事，跟 Visual Guide 完全一樣，不重複列一次：",
       "m1.jump1": "跳到 Step 1",
       "m1.jump2": "跳到 Step 2",
+      "m1.calloutPrefix2": "如果你的單檔 HTML 本來就處理不只一種資料格式，建議先看過兩來源案例分頁再回來：",
+      "m1.jumpTwoSource": "前往兩來源整合案例",
       "m2.title": "選分類方式：一次盤點，還是分段進行？",
       "m2.teaser": "檔案不大就一次做完；檔案很大就分段降低風險",
       "m2.body": "先跑一次打包腳本，再依照你的情況選一種分類方式。這一步的產出只有一張分類表，chatbot 還不會動手產生任何檔案。",
@@ -1029,6 +1525,8 @@ canonical 檔案。
       "m3.item1": "標記 contains_real_data: yes 的項目，目標一定要在 data/input/ 底下，不能落到會進 Git 的路徑",
       "m3.item2": "沒有任何一項的目標應該是 canonical 路徑",
       "m3.item3": "同一段邏輯在原檔案裡重複貼了好幾次的話，要求合併成一份 shared/，不要分開遷移",
+      "m3.item3jumpPrefix": "——這個判斷怎麼做，見",
+      "m3.item3jump": "兩來源整合案例",
       "m3.item4": "表格長到你在「滑過去」而不是「讀」的時候，回頭改用分段做（Prompt 2）",
       "m3.human1": "〔附上單檔 HTML + LLM_CONTEXT_BUNDLE.md〕+ Prompt 1",
       "m3.bot1": "分類完成，共 18 項。其中 \"sales-table-data\" 標記 contains_real_data: yes，建議目標路徑 data/input/sales.csv；\"header-nav\" 和 \"footer-nav\" 共用同一段篩選邏輯，建議合併成 shared/filters.ts 一份，而不是各自遷移。請你先審核這張表格，我還沒有產生任何檔案。",
@@ -1098,6 +1596,12 @@ updates/applied/.../apply_log.json 的內容]
       "vg.eyebrow": "VISUAL GUIDE",
       "vg.title": "Build your own workbench, guided by an LLM, from a blank folder",
       "vg.lede": "Seven sections, one for each stage you'll actually walk through. Each one expands and collapses — the hands-on parts carry real screenshots and real dialogue, so you follow along instead of guessing.",
+      "wb.eyebrow": "WHY BOTHER WITH THIS EXTRA STEP",
+      "wb.title": "Before you start — three things you've probably already lived through",
+      "wb.pain1": "Fifty messages into a chat, you ask for one small addition, and the chatbot breaks something you'd already gotten working?",
+      "wb.pain2": "You switch computers, or your chat tool runs out of quota, and all your progress vanishes — you're stuck explaining everything from scratch again?",
+      "wb.pain3": "The source data changes by one number, and the whole tool needs rebuilding instead of just updating?",
+      "wb.analogy": "Something agreed verbally drifts the moment a different person hears it, or enough time passes. Something written down as a checklist stays exactly as it was, no matter who picks it up or how long it's been. That's what this template actually does: it turns the understanding that used to live only inside one conversation into something written down — a little more work up front, but the only way this tool outlives a single chat.",
       "s1.title": "Before you start: three tools need to already be in place",
       "s1.teaser": "This one can't be checked by a script, so confirm it by hand",
       "s1.body": "Make sure all three are already on your machine \u2014 self-installing is normally fine; if your machine needs IT to install software, send that request first.",
@@ -1144,6 +1648,7 @@ updates/applied/.../apply_log.json 的內容]
       "s5.teaser": "Don't ask for \"a complete system\" in one go",
       "s5.body": "Ask for exactly one thing at a time, and have the chatbot state which files it will touch and which acceptance criteria will pass before it acts.",
       "s5.prompt": "Before you make any changes, tell me: 1) which files you'll touch, 2) which acceptance criteria will pass afterward. Wait for my confirmation before producing a patch.",
+      "s5.caseLabel": "CASE EXAMPLE · single-source demo",
       "s5.exampleIntro": "Here's what that looks like in practice — a real starter request, ready to swap for your own situation:",
       "s5.exampleLabel": "REAL EXAMPLE PROMPT · swap in your own situation",
       "s5.examplePrompt": "Here's what I need: pipe an Excel report through the template's defined data pipeline into a web data app reachable on the company's internal network, with data that can be refreshed. Skip the public-facing website for now \u2014 deliberately keeping this simple. Data refresh starts as a manually-triggered script run.\n\nAttached is a screenshot of the report's layout (real sensitive data removed, only the field structure kept) so you can see how it's actually presented.\n\nBefore planning any code changes, please:\n1. List the questions you need me to answer that are still unclear (e.g. how often the report refreshes, who's the single owner of the data, which fields need validation rules) \u2014 ask rather than assume, except where the template itself already defines the rule.\n2. Break the whole request into a few small stages, each one a single acceptance-testable change on its own \u2014 not everything at once.\n3. For the first stage only, tell me which files you'll change and which acceptance criteria will pass once it's done, and wait for my confirmation before producing a patch.",
@@ -1169,6 +1674,104 @@ updates/applied/.../apply_log.json 的內容]
       "s7.goodLabel": "✓ What to do instead",
       "s7.good1": "While you're at it, rename the README to our project name",
       "s7.good2": "README.md is a template-contract file — I'd hold off changing it on an ordinary project change. If you do want it changed, let me list what would diverge from TEMPLATE_BOUNDARY.md first, and you confirm before I touch it. Sound okay?",
+      "nav.twoSource": "Two-source integration case",
+      "ts.eyebrow": "CASE STUDY",
+      "ts.pageTitle": "Turning two mismatched data sources into one trustworthy dataset",
+      "ts.lede": "A minimal, made-up dataset shows how to align two sources that each record part of the truth into something a web data app can use. The mental model built here also applies when migrating a real, messy single-file HTML — worth finishing this before the migration tab.",
+      "ts1.title": "The setup: why two sources can't just be merged",
+      "ts1.teaser": "Build the mental picture before touching any fields",
+      "ts1.body": "Imagine a company switched shipping systems: the old one logged shipments directly in \"boxes\"; the new one logs \"pieces\" instead — because that's what a warehouse worker actually counts by hand — plus a conversion factor per box. During the changeover the two systems' data doesn't match format, so answering \"how much shipped this month\" means reconciling both first.",
+      "ts1.why": "Why a warehouse: it's just a concrete picture. The real point is \"two systems each record part of the truth, in different formats\" — switching CRMs, or two departments each keeping their own spreadsheet, are the same pattern. Swap in your own situation.",
+      "ts.diagA": "Warehouse system A (old)",
+      "ts.diagASub": "Logs shipments in \"boxes\"",
+      "ts.diagB": "Warehouse system B (new)",
+      "ts.diagBSub": "Logs \"pieces\" + a conversion factor",
+      "ts.diagMid": "Align formats and units",
+      "ts.diagMid1": "Date field named differently",
+      "ts.diagMid2": "Category codes don't match",
+      "ts.diagMid3": "Pieces ÷ factor = boxes",
+      "ts.diagUnified": "Unified shipment dataset",
+      "ts.diagUnifiedSub": "One trustworthy dataset",
+      "ts.diagApp": "Web Data App",
+      "ts.diagAppSub": "Filters, charts, reports",
+      "ts2.title": "Laying out what the two sources actually look like",
+      "ts2.teaser": "Look at the data before the problem",
+      "ts2.body": "Below are the fields these two systems actually export — this is demo data specific to this case; swap in your own situation and it's the same problem.",
+      "ts2.caseLabel": "CASE EXAMPLE · two-source integration demo",
+      "ts2.tableACaption": "Source A: Warehouse System A (old) export",
+      "ts2.tableBCaption": "Source B: Warehouse System B (new) export",
+      "ts.colField": "Field",
+      "ts.colType": "Type",
+      "ts.colPurpose": "Purpose",
+      "ts2.aType1": "Date",
+      "ts2.aPurpose1": "Time-series grouping, the UI's date filter",
+      "ts2.aType2": "String enum (stationery/appliances/food)",
+      "ts2.aPurpose2": "Category filter, legend",
+      "ts2.aType3": "String enum",
+      "ts2.aPurpose3": "Site dimension",
+      "ts2.aType4": "Integer",
+      "ts2.aPurpose4": "Already-converted unit — the \"equivalent\" side",
+      "ts2.aType5": "Decimal 0–1",
+      "ts2.aPurpose5": "Rate provided directly by the source — use as-is, never recompute",
+      "ts2.aType6": "String enum (shipped/returned/cancelled)",
+      "ts2.aPurpose6": "Eligibility field for the formal population filter",
+      "ts2.bType1": "Date",
+      "ts2.bPurpose1": "Same concept as order_date, different field name",
+      "ts2.bType2": "String enum (STA/APL/FOD)",
+      "ts2.bPurpose2": "Same category concept, different code scheme",
+      "ts2.bType3": "Integer (coefficient)",
+      "ts2.bPurpose3": "The conversion factor itself",
+      "ts2.bType4": "Integer",
+      "ts2.bPurpose4": "Raw unit — divide by pieces_per_box to align",
+      "ts2.bType5": "Boolean",
+      "ts2.bPurpose5": "Same concept as status, but boolean instead of an enum",
+      "ts2.item1": "Field names differ (order_date vs ship_date) — don't assume matching names mean the same join key",
+      "ts2.item2": "Category encodings differ (Chinese categories vs English codes) — needs a mapping table",
+      "ts2.item3": "Units differ — qty_boxes is already converted; qty_pieces needs dividing by pieces_per_box to align",
+      "ts2.item4": "Eligibility fields differ in type — enum vs boolean — need one shared representation",
+      "ts2.item5": "on_time_rate is a rate the source provides directly — use it as-is, don't recompute it yourself",
+      "ts3.title": "Writing the contract: what the merged shape should look like",
+      "ts3.teaser": "Agree on the target shape before converting anything",
+      "ts3.body": "Before converting any data, define the fields a \"merged dataset\" should have — this is exactly what shared/ and docs/DATA_CONTRACT.md do in the template.",
+      "ts3.tableCaption": "The unified fields after merging",
+      "ts3.type1": "Date",
+      "ts3.from1": "Unified from order_date / ship_date",
+      "ts3.type2": "String enum (shared code)",
+      "ts3.from2": "Unified from product_line's mapping table and category_code",
+      "ts3.type3": "Integer",
+      "ts3.from3": "Source B converted via qty_pieces ÷ pieces_per_box",
+      "ts3.type4": "Boolean",
+      "ts3.from4": "Unified from status (shipped = true) and fulfilled_flag",
+      "ts3.type5": "Decimal 0–1",
+      "ts3.from5": "Kept as-is from the source, never recomputed",
+      "ts3.type6": "String enum (A/B)",
+      "ts3.from6": "Keeps the source, so a record can be traced back",
+      "ts3.why": "Why keep a source field: if a record turns out to have a problem later, you need to know which system it came from to trace it back — that's data lineage, not busywork.",
+      "ts4.title": "Make the request: have the chatbot list what's unclear first",
+      "ts4.teaser": "The same pattern Step 5 already taught, with an example for this case",
+      "ts4.body": "Same as Visual Guide taught: have the chatbot state what's unclear before it starts converting anything.",
+      "ts4.jump": "Jump to Step 5 for the general rule",
+      "ts4.caseLabel": "CASE EXAMPLE · two-source integration demo",
+      "ts4.promptLabel": "REAL EXAMPLE PROMPT · swap in your own two sources",
+      "ts4.prompt": "I have two exports from warehouse systems (field descriptions for both attached) that I want to merge into one trustworthy shipment dataset for a web data app.\n\nBefore you write any conversion rules, please:\n1. List the field mappings in these two datasets that you need me to confirm but are still unclear (e.g. how to map the category codes, how to unify the eligibility field) — don't fill gaps with assumptions or guesses.\n2. Explain how you plan to handle a missing or zero conversion factor.\n3. Tell me how you'll write the conversion rule and which files it will produce, and wait for my confirmation before starting.",
+      "ts5.title": "Validation rules: bad data gets rejected, not accepted quietly",
+      "ts5.teaser": "The single most important engineering lesson in this case",
+      "ts5.body": "If the conversion factor is missing or zero, it must not be quietly treated as 1 — that record needs to be rejected and logged, not silently accepted.",
+      "ts5.badLabel": "✕ What not to do",
+      "ts5.bad1": "Some rows have a blank pieces_per_box — what should I do?",
+      "ts5.bad2": "Just treat blank as 1 so it runs.",
+      "ts5.goodLabel": "✓ What to do instead",
+      "ts5.good1": "Some rows have a blank pieces_per_box — what should I do?",
+      "ts5.good2": "I'll reject those rows outright rather than guessing a default — a missing conversion factor usually means the record itself has a problem, and forcing a value in produces a quantity that's wrong without you knowing it. I'll log how many rows this affects so you can decide whether to fix the source data or exclude them.",
+      "ts5.why": "Why not guess a default: a missing conversion factor usually signals a real problem with the record. Forcing a guessed value through makes the total wrong, and you won't know it's wrong.",
+      "ts6.title": "Apply the update",
+      "ts6.teaser": "Same mechanism as Visual Guide Step 6",
+      "ts6.body": "Drop the update package the chatbot produces into updates/incoming/ and run apply_update.py — not repeated here.",
+      "ts6.jump": "Jump to Step 6 for the full flow and screenshots",
+      "ts7.title": "See the result: two sources become one Web Data App",
+      "ts7.teaser": "This is the actual finish line for this case",
+      "ts7.body": "Once merged, the frontend can use this single dataset directly for date filtering, category filtering, summed quantities, and rate displays — none of which were possible before the two sources were aligned.",
+      "ts7.why": "A third or fourth source is the same pattern applied again — it's not harder than two. That's also why this case stops at two sources on purpose.",
       "ph.architecture.title": "Architecture Rules",
       "ph.architecture.body": "Maps to ai/ARCHITECTURE_RULES.md — will get the same paragraph-style visual treatment later.",
       "ph.data.title": "Data Contract",
@@ -1188,6 +1791,8 @@ updates/applied/.../apply_log.json 的內容]
       "m1.calloutPrefix": "Getting the prerequisites ready and getting the project are identical to the Visual Guide \u2014 not repeated here:",
       "m1.jump1": "Jump to Step 1",
       "m1.jump2": "Jump to Step 2",
+      "m1.calloutPrefix2": "If your single-file HTML already handles more than one data format, look at the two-source case study tab first, then come back:",
+      "m1.jumpTwoSource": "Go to the two-source integration case",
       "m2.title": "Choose how to classify: all at once, or section by section?",
       "m2.teaser": "Small file: do it all at once. Large file: go section by section to reduce risk",
       "m2.body": "Run the bundling script once, then pick a classification approach for your situation. This step only produces a classification table \u2014 the chatbot doesn't touch any files yet.",
@@ -1241,6 +1846,8 @@ I'll come back with the next section once this one is approved and migrated.`,
       "m3.item1": "Any row marked contains_real_data: yes must target a path under data/input/ \u2014 never a path that gets committed to Git",
       "m3.item2": "No row should target a canonical path",
       "m3.item3": "If the same logic is pasted in multiple places in the original file, ask the chatbot to consolidate it into one shared/ location instead of migrating each copy separately",
+      "m3.item3jumpPrefix": "— for how to make that call, see",
+      "m3.item3jump": "the two-source integration case",
       "m3.item4": "If the table is long enough that you're skimming instead of reading, switch to section-by-section (Prompt 2) instead",
       "m3.human1": "[attaches the single-file HTML + LLM_CONTEXT_BUNDLE.md] + Prompt 1",
       "m3.bot1": "Classification done \u2014 18 rows. \"sales-table-data\" is marked contains_real_data: yes, proposed target data/input/sales.csv; \"header-nav\" and \"footer-nav\" share the same filter logic \u2014 recommend consolidating into one shared/filters.ts instead of migrating each separately. Please review this table \u2014 I haven't produced any files yet.",
